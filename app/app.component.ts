@@ -1,7 +1,7 @@
 import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from "angular2/router";
-import {LoginComponent} from "./login/login.component";
 import {MeetsComponent} from "./meets/meets.component";
+import {RegComponent} from "./reg/reg.component";
 
 @Component({
     selector: 'app',
@@ -9,7 +9,7 @@ import {MeetsComponent} from "./meets/meets.component";
         <header>
             <nav class="sl-nav">
                 <ul>
-                    <li><a [routerLink]="['Login']">Login</a></li>
+                    <li><a [routerLink]="['Reg']">Create Account</a></li>
                     <li><a [routerLink]="['Meets']">Meets</a></li>
                 </ul>
             </nav>
@@ -25,7 +25,7 @@ import {MeetsComponent} from "./meets/meets.component";
 })
 @RouteConfig([
     {path: '/', name: 'Meets', component: MeetsComponent, useAsDefault: true},
-    {path:'/login', name: 'Login', component: LoginComponent},
+    {path:'/register', name: 'Reg', component: RegComponent},
 
     // Catch All route
     {path: '/**', redirectTo:['Meets'] }
