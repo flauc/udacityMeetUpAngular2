@@ -3,7 +3,7 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
 
     config = {
-        stylus: './styles',
+        stylus: './styles/**/**.styl',
         stylusMain: './styles/style.styl'
     };
 

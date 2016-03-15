@@ -7,7 +7,7 @@ import {MeetsComponent} from "./meets/meets.component";
     selector: 'app',
     template: `
         <header>
-            <nav class="classic-nav">
+            <nav class="sl-nav">
                 <ul>
                     <li><a [routerLink]="['Login']">Login</a></li>
                     <li><a [routerLink]="['Meets']">Meets</a></li>

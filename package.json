@@ -1,7 +1,7 @@
 {
   "name": "meet-up-angular2",
   "version": "1.0.0",
-  "description": "A project for the Udacity Senior Web Developer Nanodegree. ",
+  "description": "A project for the Udacity Senior Web Developer Nanodegree.",
   "main": "index.js",
   "scripts": {
     "lite": "lite-server"
