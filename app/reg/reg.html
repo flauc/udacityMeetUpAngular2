@@ -4,7 +4,7 @@
         <form [ngFormModel]="regForm" (ngSubmit)="onSubmit(regForm.value)" novalidate>
 
             <div class="form-block">
-                <app-progress [checks]="checks"></app-progress>
+                <app-progress [checks]="reqChecks"></app-progress>
                 <div class="row">
                     <div class="columns four">
                         <div class="st-input">
@@ -15,9 +15,10 @@
                                        placeholder="John Dou"
                                        required
                                        autofocus
-                                       #nameEl
-                                       [(ngModel)]="name">
-                            <span [hidden]="showHelpers('name', nameEl)">
+                                       [(ngModel)]="name"
+                                       (ngModelChange)="valueChange('name')"
+                                       [ngFormControl]="regForm.find('name')">
+                            <span>
                                 <span class="error-message" [ngClass]="{'red-c': regForm.find('name').hasError('minlength') || regForm.find('name').hasError('required'), 'green-c': !regForm.find('name').hasError('minlength') && !regForm.find('name').hasError('required')}">
                                     <i class="material-icons">&#xE86C;</i>
                                     <span class="txt">Longer then 3 characters</span>
@@ -43,9 +44,10 @@
                                        id="email"
                                        placeholder="john.dou@example.com"
                                        required
-                                       #emailEl
-                                       [(ngModel)]="email">
-                             <span [hidden]="showHelpers('email', emailEl)" class="error-message" [ngClass]="{'red-c': !regForm.find('email').valid || regForm.find('email').hasError('required'), 'green-c': regForm.find('email').valid && !regForm.find('email').hasError('required') && !regForm.find('email').hasError('pattern')}">
+                                       [(ngModel)]="email"
+                                       (ngModelChange)="valueChange('email')"
+                                       [ngFormControl]="regForm.find('email')">
+                             <span class="error-message" [ngClass]="{'red-c': !regForm.find('email').valid || regForm.find('email').hasError('required'), 'green-c': regForm.find('email').valid && !regForm.find('email').hasError('required') && !regForm.find('email').hasError('pattern')}">
                                 <i class="material-icons">&#xE86C;</i>
                                 <span class="txt">Is a valid email</span>
                             </span>
@@ -61,8 +63,35 @@
                                        id="password"
                                        required
                                        [(ngModel)]="password"
+                                       (ngModelChange)="valueChange('password')"
                                        [ngFormControl]="regForm.find('password')">
                             </label>
+                            <span>
+                                <span class="error-message" [ngClass]="{'red-c': regForm.find('password').hasError('minlength') || regForm.find('password').hasError('required'), 'green-c': !regForm.find('password').hasError('minlength') && !regForm.find('password').hasError('required')}">
+                                    <i class="material-icons">&#xE86C;</i>
+                                    <span class="txt">Longer then 8 characters</span>
+                                </span>
+                                <span class="error-message" [ngClass]="{'red-c': regForm.find('password').hasError('maxlength') || regForm.find('password').hasError('required'), 'green-c': !regForm.find('password').hasError('maxlength') && !regForm.find('password').hasError('required')}">
+                                    <i class="material-icons">&#xE86C;</i>
+                                    <span class="txt">Shorter then 1000 characters</span>
+                                </span>
+                                <span class="error-message" [ngClass]="{'red-c': regForm.find('password').hasError('hasLower') || regForm.find('password').hasError('required'), 'green-c': !regForm.find('password').hasError('hasLower') && !regForm.find('password').hasError('required')}">
+                                    <i class="material-icons">&#xE86C;</i>
+                                    <span class="txt">At lest one lowercase letter</span>
+                                </span>
+                                <span class="error-message" [ngClass]="{'red-c': regForm.find('password').hasError('hasUpper') || regForm.find('password').hasError('required'), 'green-c': !regForm.find('password').hasError('hasUpper') && !regForm.find('password').hasError('required')}">
+                                    <i class="material-icons">&#xE86C;</i>
+                                    <span class="txt">At lest one uppercase letter</span>
+                                </span>
+                                <span class="error-message" [ngClass]="{'red-c': regForm.find('password').hasError('hasDigit') || regForm.find('password').hasError('required'), 'green-c': !regForm.find('password').hasError('hasDigit') && !regForm.find('password').hasError('required')}">
+                                    <i class="material-icons">&#xE86C;</i>
+                                    <span class="txt">At lest one digit</span>
+                                </span>
+                                <span class="error-message" [ngClass]="{'red-c': regForm.find('password').hasError('hasSpecial') || regForm.find('password').hasError('required'), 'green-c': !regForm.find('password').hasError('hasSpecial') && !regForm.find('password').hasError('required')}">
+                                    <i class="material-icons">&#xE86C;</i>
+                                    <span class="txt">At lest one special (*!@$#?=&%)</span>
+                                </span>
+                            </span>
                         </div>
                     </div>
                 </div>

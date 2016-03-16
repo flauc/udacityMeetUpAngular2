@@ -6,7 +6,7 @@ import {Component, ViewEncapsulation} from 'angular2/core';
     encapsulation: ViewEncapsulation.None,
     template: `
         <div class="progress" [hidden]="showProgress">
-            <span [ngStyle]="{'width': progressWidth + '%'}" *ngFor="#a of checks;  #i = index" [hidden]="!shouldShow(a,i)"></span>
+            <span [ngStyle]="{'width': progressWidth + '%'}" *ngFor="#a of checks;  #i = index" [hidden]="!shouldShow(a.value,i)"></span>
         </div>
     `
 
@@ -16,10 +16,11 @@ export class ProgressComponent {
 
     ngOnInit() {
         this.progressWidth = 100/this.checks.length;
+        console.log(this.checks)
     }
 
     // Inputs
-    checks: boolean[];
+    checks: any;
 
     // Locals
     progressWidth: number;
@@ -30,7 +31,7 @@ export class ProgressComponent {
         if(value) {
             toReturn = true;
             for(let i = 0; i < index; i++) {
-                if(!this.checks[i]) toReturn = false;
+                if(!this.checks[i].value) toReturn = false;
             }
         }
 

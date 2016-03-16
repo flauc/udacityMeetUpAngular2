@@ -3,15 +3,31 @@ import {CORE_DIRECTIVES, FORM_DIRECTIVES, FormBuilder, ControlGroup, Validators,
 import {ProgressComponent} from "../helpers/progress.component";
 
 
-////// Validators
-
-
-// Name Validators
-function nameValidator(control: Control): { [s: string]: boolean } {
-    if (control.value && !control.value.match(/^[a-zA-Z ]{3,20}$/)) {
-        return {invalidName: true};
+// Password Validators
+function hasUpper(control: Control): { [s: string]: boolean } {
+    if (control.value && !control.value.match(/^(?=.*[A-Z]).+$/)) {
+        return {hasUpper: true};
     }
 }
+
+function hasLower(control: Control): { [s: string]: boolean } {
+    if (control.value && !control.value.match(/^(?=.*[a-z]).+$/)) {
+        return {hasLower: true};
+    }
+}
+
+function hasDigit(control: Control): { [s: string]: boolean } {
+    if (control.value && !control.value.match(/^(?=.*[0-9]).+$/)) {
+        return {hasDigit: true};
+    }
+}
+
+function hasSpecial(control: Control): { [s: string]: boolean } {
+    if (control.value && !control.value.match(/^(?=.*[*!@$#?=&%]).+$/)) {
+        return {hasSpecial: true};
+    }
+}
+
 
 @Component({
     selector: 'app-reg',
@@ -31,19 +47,14 @@ export class RegComponent {
         this.regForm = formBuilder.group({
             'name': ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern('^[a-zA-Z ]+$')])],
             'email': ['', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9!._-]+[@]+[a-zA-Z.]+$')])],
-            'password': ['', Validators.required]
+            'password': ['', Validators.compose([Validators.minLength(8), Validators.maxLength(1000), hasUpper, hasLower, hasDigit, hasSpecial])]
         });
 
-        this.checks = [
-            this.regForm.find('name').valid,
-            this.regForm.find('email').valid,
-            this.regForm.find('password').valid
+        this.reqChecks = [
+            {name: 'name', value: this.regForm.find('name').valid},
+            {name: 'email', value: this.regForm.find('email').valid},
+            {name: 'password', value: this.regForm.find('password').valid}
         ]
-    }
-
-
-    ngOnChanges(val, val1) {
-        console.log(val, val1);
     }
 
     // Locals
@@ -52,12 +63,19 @@ export class RegComponent {
     email: string;
     password: string;
 
-    checks: boolean[];
+    reqChecks: any;
 
     // Determines if the error-messages should be visible
     showHelpers(value: string, element) {
         let temp = this.regForm.find(value);
         return temp.pristine;
+    }
+
+    valueChange(name: string) {
+        let temp = this.regForm.find(name).valid;
+        this.reqChecks.forEach(a=> {
+            if(a.name == name && a.value != temp) a.value = temp
+        })
     }
 
     onSubmit(value) {
