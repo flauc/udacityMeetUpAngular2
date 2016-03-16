@@ -2,7 +2,7 @@
     <div class="container">
 
         <form [ngFormModel]="regForm" (ngSubmit)="onSubmit(regForm.value)" novalidate>
-
+            <h3>Account Information (Required)</h3>
             <div class="form-block">
                 <app-progress [checks]="reqChecks"></app-progress>
                 <div class="row">
@@ -16,7 +16,7 @@
                                        required
                                        autofocus
                                        [(ngModel)]="name"
-                                       (ngModelChange)="valueChange('name')"
+                                       (ngModelChange)="valueChange('name', true)"
                                        [ngFormControl]="regForm.find('name')">
                             <span>
                                 <span class="error-message" [ngClass]="{'red-c': regForm.find('name').hasError('minlength') || regForm.find('name').hasError('required'), 'green-c': !regForm.find('name').hasError('minlength') && !regForm.find('name').hasError('required')}">
@@ -45,7 +45,7 @@
                                        placeholder="john.dou@example.com"
                                        required
                                        [(ngModel)]="email"
-                                       (ngModelChange)="valueChange('email')"
+                                       (ngModelChange)="valueChange('email', true)"
                                        [ngFormControl]="regForm.find('email')">
                              <span class="error-message" [ngClass]="{'red-c': !regForm.find('email').valid || regForm.find('email').hasError('required'), 'green-c': regForm.find('email').valid && !regForm.find('email').hasError('required') && !regForm.find('email').hasError('pattern')}">
                                 <i class="material-icons">&#xE86C;</i>
@@ -63,7 +63,7 @@
                                        id="password"
                                        required
                                        [(ngModel)]="password"
-                                       (ngModelChange)="valueChange('password')"
+                                       (ngModelChange)="valueChange('password', true)"
                                        [ngFormControl]="regForm.find('password')">
                             </label>
                             <span>
@@ -97,6 +97,51 @@
                 </div>
 
             </div>
+
+            <h3>Personal Information</h3>
+
+            <div class="form-block">
+                <app-progress [checks]="reqChecks"></app-progress>
+                <div class="row">
+                    <div class="columns four">
+                        <div class="st-input">
+                            <label for="email">
+                                <span class="label">Employer</span>
+                                <input type="text"
+                                       id="employer"
+                                       placeholder="Google"
+                                       required
+                                       [(ngModel)]="employer"
+                                       (ngModelChange)="valueChange('employer', false)"
+                                       [ngFormControl]="regForm.find('employer')">
+                                <span class="error-message" [ngClass]="{'red-c': !regForm.find('employer').valid, 'green-c': regForm.find('employer').valid && !regForm.find('employer').hasError('pattern')}">
+                                    <i class="material-icons">&#xE86C;</i>
+                                    <span class="txt">Has only letters dots and numbers.</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="columns four">
+                        <div class="st-input">
+                            <label for="email">
+                                <span class="label">Employer</span>
+                                <input type="text"
+                                       id="employer"
+                                       placeholder="Google"
+                                       required
+                                       [(ngModel)]="employer"
+                                       (ngModelChange)="valueChange('employer', false)"
+                                       [ngFormControl]="regForm.find('employer')">
+                                <span class="error-message" [ngClass]="{'red-c': !regForm.find('employer').valid, 'green-c': regForm.find('employer').valid && !regForm.find('employer').hasError('pattern')}">
+                                    <i class="material-icons">&#xE86C;</i>
+                                    <span class="txt">Has only letters dots and numbers.</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <button type="submit" class="st-button">Submit</button>
             </div>

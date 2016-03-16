@@ -59,11 +59,13 @@ export class RegComponent {
 
     // Locals
     regForm: ControlGroup;
+
     name: string;
     email: string;
     password: string;
 
     reqChecks: any;
+    optChecks: any;
 
     // Determines if the error-messages should be visible
     showHelpers(value: string, element) {
@@ -71,11 +73,17 @@ export class RegComponent {
         return temp.pristine;
     }
 
-    valueChange(name: string) {
+    valueChange(name: string, checkReq: boolean) {
         let temp = this.regForm.find(name).valid;
-        this.reqChecks.forEach(a=> {
-            if(a.name == name && a.value != temp) a.value = temp
-        })
+        if(checkReq) {
+            this.reqChecks.forEach(a=> {
+                if(a.name == name && a.value != temp) a.value = temp
+            })
+        } else {
+            this.optChecks.forEach(a=> {
+                if(a.name == name && a.value != temp) a.value = temp
+            })
+        }
     }
 
     onSubmit(value) {
