@@ -49,7 +49,7 @@ export class RegComponent {
         this.regForm = formBuilder.group({
             'name': ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern('^[a-zA-Z ]+$')])],
             'email': ['', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9!._-]+[@]+[a-zA-Z.]+$')])],
-            'password': ['', Validators.compose([Validators.minLength(8), Validators.maxLength(1000), hasUpper, hasLower, hasDigit, hasSpecial])],
+            'password': ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(1000), hasUpper, hasLower, hasDigit, hasSpecial])],
             'employer': ['', Validators.pattern('^[a-zA-Z0-9 .]+$')],
             'position': ['', Validators.pattern('^[a-zA-Z0-9 .]+$')],
             'fruit': ['', Validators.pattern('^[a-zA-Z ]+$')],
@@ -93,9 +93,9 @@ export class RegComponent {
     optChecks: any;
 
     // Determines if the error-messages should be visible
-    showHelpers(value: string, element) {
+    showHelpers(value:string) {
         let temp = this.regForm.find(value);
-        return temp.pristine;
+        return temp.pristine || temp.valid;
     }
 
     valueChange(name: string, checkReq: boolean) {

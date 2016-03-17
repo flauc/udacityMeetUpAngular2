@@ -23,7 +23,7 @@
                                            [(ngModel)]="name"
                                            (ngModelChange)="valueChange('name', true)"
                                            [ngFormControl]="regForm.find('name')">
-                            <span>
+                            <span [hidden]="showHelpers('name')">
                                 <span class="error-message" [ngClass]="{'red-c': regForm.find('name').hasError('minlength') || regForm.find('name').hasError('required'), 'green-c': !regForm.find('name').hasError('minlength') && !regForm.find('name').hasError('required')}">
                                     <i class="material-icons">&#xE86C;</i>
                                     <span class="txt">Longer then 3 characters</span>
@@ -52,7 +52,7 @@
                                            [(ngModel)]="email"
                                            (ngModelChange)="valueChange('email', true)"
                                            [ngFormControl]="regForm.find('email')">
-                             <span class="error-message" [ngClass]="{'red-c': !regForm.find('email').valid || regForm.find('email').hasError('required'), 'green-c': regForm.find('email').valid && !regForm.find('email').hasError('required') && !regForm.find('email').hasError('pattern')}">
+                             <span class="error-message" [hidden]="showHelpers('email')" [ngClass]="{'red-c': !regForm.find('email').valid || regForm.find('email').hasError('required'), 'green-c': regForm.find('email').valid && !regForm.find('email').hasError('required') && !regForm.find('email').hasError('pattern')}">
                                 <i class="material-icons">&#xE86C;</i>
                                 <span class="txt">Is a valid email</span>
                             </span>
@@ -71,7 +71,7 @@
                                            (ngModelChange)="valueChange('password', true)"
                                            [ngFormControl]="regForm.find('password')">
                                 </label>
-                            <span>
+                            <span [hidden]="showHelpers('password')">
                                 <span class="error-message" [ngClass]="{'red-c': regForm.find('password').hasError('minlength') || regForm.find('password').hasError('required'), 'green-c': !regForm.find('password').hasError('minlength') && !regForm.find('password').hasError('required')}">
                                     <i class="material-icons">&#xE86C;</i>
                                     <span class="txt">Longer then 8 characters</span>
