@@ -2,22 +2,27 @@
     <div class="container">
 
         <form [ngFormModel]="regForm" (ngSubmit)="onSubmit(regForm.value)" novalidate>
-            <h3>Account Information (Required)</h3>
-            <div class="form-block">
-                <app-progress [checks]="reqChecks"></app-progress>
-                <div class="row">
-                    <div class="columns four">
-                        <div class="st-input">
-                            <label for="name">
-                                <span class="label">Full Name</span>
-                                <input type="text"
-                                       id="name"
-                                       placeholder="John Dou"
-                                       required
-                                       autofocus
-                                       [(ngModel)]="name"
-                                       (ngModelChange)="valueChange('name', true)"
-                                       [ngFormControl]="regForm.find('name')">
+
+            <div class="row">
+                <h3 class="form-title">Account Information (Required)</h3>
+            </div>
+
+            <div class="row">
+                <div class="form-block">
+                    <app-progress [checks]="reqChecks"></app-progress>
+                    <div class="row">
+                        <div class="columns four">
+                            <div class="st-input">
+                                <label for="name">
+                                    <span class="label">Full Name</span>
+                                    <input type="text"
+                                           id="name"
+                                           placeholder="John Dou"
+                                           required
+                                           autofocus
+                                           [(ngModel)]="name"
+                                           (ngModelChange)="valueChange('name', true)"
+                                           [ngFormControl]="regForm.find('name')">
                             <span>
                                 <span class="error-message" [ngClass]="{'red-c': regForm.find('name').hasError('minlength') || regForm.find('name').hasError('required'), 'green-c': !regForm.find('name').hasError('minlength') && !regForm.find('name').hasError('required')}">
                                     <i class="material-icons">&#xE86C;</i>
@@ -32,40 +37,40 @@
                                     <span class="txt">Has only letters and spaces</span>
                                 </span>
                             </span>
-                            </label>
+                                </label>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="columns four">
-                        <div class="st-input">
-                            <label for="email">
-                                <span class="label">Email</span>
-                                <input type="email"
-                                       id="email"
-                                       placeholder="john.dou@example.com"
-                                       required
-                                       [(ngModel)]="email"
-                                       (ngModelChange)="valueChange('email', true)"
-                                       [ngFormControl]="regForm.find('email')">
+                        <div class="columns four">
+                            <div class="st-input">
+                                <label for="email">
+                                    <span class="label">Email</span>
+                                    <input type="email"
+                                           id="email"
+                                           placeholder="john.dou@example.com"
+                                           required
+                                           [(ngModel)]="email"
+                                           (ngModelChange)="valueChange('email', true)"
+                                           [ngFormControl]="regForm.find('email')">
                              <span class="error-message" [ngClass]="{'red-c': !regForm.find('email').valid || regForm.find('email').hasError('required'), 'green-c': regForm.find('email').valid && !regForm.find('email').hasError('required') && !regForm.find('email').hasError('pattern')}">
                                 <i class="material-icons">&#xE86C;</i>
                                 <span class="txt">Is a valid email</span>
                             </span>
-                            </label>
+                                </label>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="columns four">
-                        <div class="st-input">
-                            <label for="password">
-                                <span class="label">Password</span>
-                                <input type="password"
-                                       id="password"
-                                       required
-                                       [(ngModel)]="password"
-                                       (ngModelChange)="valueChange('password', true)"
-                                       [ngFormControl]="regForm.find('password')">
-                            </label>
+                        <div class="columns four">
+                            <div class="st-input">
+                                <label for="password">
+                                    <span class="label">Password</span>
+                                    <input type="password"
+                                           id="password"
+                                           required
+                                           [(ngModel)]="password"
+                                           (ngModelChange)="valueChange('password', true)"
+                                           [ngFormControl]="regForm.find('password')">
+                                </label>
                             <span>
                                 <span class="error-message" [ngClass]="{'red-c': regForm.find('password').hasError('minlength') || regForm.find('password').hasError('required'), 'green-c': !regForm.find('password').hasError('minlength') && !regForm.find('password').hasError('required')}">
                                     <i class="material-icons">&#xE86C;</i>
@@ -92,133 +97,138 @@
                                     <span class="txt">At lest one special (*!@$#?=&%)</span>
                                 </span>
                             </span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
 
-            <h3>Personal Information</h3>
+            <div class="row">
+                <h3 class="form-title">Personal Information</h3>
+            </div>
 
-            <div class="form-block">
-                <app-progress [checks]="reqChecks"></app-progress>
-                <div class="row">
-                    <div class="columns four">
-                        <div class="st-input">
-                            <label for="employer">
-                                <span class="label">Employer</span>
-                                <input type="text"
-                                       id="employer"
-                                       placeholder="Google"
-                                       required
-                                       [(ngModel)]="employer"
-                                       (ngModelChange)="valueChange('employer', false)"
-                                       [ngFormControl]="regForm.find('employer')">
+            <div class="row">
+                <div class="form-block">
+                    <app-progress [checks]="optChecks"></app-progress>
+                    <div class="row">
+                        <div class="columns four">
+                            <div class="st-input">
+                                <label for="employer">
+                                    <span class="label">Employer</span>
+                                    <input type="text"
+                                           id="employer"
+                                           placeholder="Google"
+                                           required
+                                           [(ngModel)]="employer"
+                                           (ngModelChange)="valueChange('employer', false)"
+                                           [ngFormControl]="regForm.find('employer')">
                                 <span class="error-message" [ngClass]="{'red-c': !regForm.find('employer').valid, 'green-c': regForm.find('employer').valid && !regForm.find('employer').hasError('pattern')}">
                                     <i class="material-icons">&#xE86C;</i>
                                     <span class="txt">Has only letters, spaces, dots and numbers.</span>
                                 </span>
-                            </label>
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="columns four">
-                        <div class="st-input">
-                            <label for="position">
-                                <span class="label">Position</span>
-                                <input type="text"
-                                       id="position"
-                                       placeholder="Lion Tamer"
-                                       required
-                                       [(ngModel)]="position"
-                                       (ngModelChange)="valueChange('position', false)"
-                                       [ngFormControl]="regForm.find('position')">
+                        <div class="columns four">
+                            <div class="st-input">
+                                <label for="position">
+                                    <span class="label">Position</span>
+                                    <input type="text"
+                                           id="position"
+                                           placeholder="Lion Tamer"
+                                           required
+                                           [(ngModel)]="position"
+                                           (ngModelChange)="valueChange('position', false)"
+                                           [ngFormControl]="regForm.find('position')">
                                 <span class="error-message" [ngClass]="{'red-c': !regForm.find('position').valid, 'green-c': regForm.find('position').valid && !regForm.find('position').hasError('pattern')}">
                                     <i class="material-icons">&#xE86C;</i>
                                     <span class="txt">Has only letters, spaces, dots and numbers.</span>
                                 </span>
-                            </label>
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="columns four">
-                        <div class="st-input">
-                            <label for="fruit">
-                                <span class="label">Favorite Fruit</span>
-                                <input type="text"
-                                       id="fruit"
-                                       placeholder="Horned Melon"
-                                       required
-                                       [(ngModel)]="fruit"
-                                       (ngModelChange)="valueChange('fruit', false)"
-                                       [ngFormControl]="regForm.find('fruit')">
-                                <span class="error-message" [ngClass]="{'red-c': !regForm.find('fruit').valid, 'green-c': regForm.find('position').valid && !regForm.find('fruit').hasError('pattern')}">
+                        <div class="columns four">
+                            <div class="st-input">
+                                <label for="fruit">
+                                    <span class="label">Favorite Fruit</span>
+                                    <input type="text"
+                                           id="fruit"
+                                           placeholder="Horned Melon"
+                                           required
+                                           [(ngModel)]="fruit"
+                                           (ngModelChange)="valueChange('fruit', false)"
+                                           [ngFormControl]="regForm.find('fruit')">
+                                <span class="error-message" [ngClass]="{'red-c': !regForm.find('fruit').valid, 'green-c': regForm.find('fruit').valid && !regForm.find('fruit').hasError('pattern')}">
                                     <i class="material-icons">&#xE86C;</i>
                                     <span class="txt">Has only letters and spaces.</span>
                                 </span>
-                            </label>
+                                </label>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="columns four">
-                        <div class="st-input">
-                            <label for="num">
-                                <span class="label">Favorite Number</span>
-                                <input type="number"
-                                       id="num"
-                                       placeholder="25"
-                                       required
-                                       [(ngModel)]="num"
-                                       (ngModelChange)="valueChange('num', false)"
-                                       [ngFormControl]="regForm.find('num')">
+                    <div class="row">
+                        <div class="columns four">
+                            <div class="st-input">
+                                <label for="num">
+                                    <span class="label">Favorite Number</span>
+                                    <input type="number"
+                                           id="num"
+                                           placeholder="25"
+                                           required
+                                           [(ngModel)]="num"
+                                           (ngModelChange)="valueChange('num', false)"
+                                           [ngFormControl]="regForm.find('num')">
                                 <span class="error-message" [ngClass]="{'red-c': !regForm.find('num').valid, 'green-c': regForm.find('num').valid && !regForm.find('num').hasError('pattern')}">
                                     <i class="material-icons">&#xE86C;</i>
                                     <span class="txt">Is whole number</span>
                                 </span>
-                            </label>
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="columns four">
-                        <div class="st-input">
-                            <label for="year">
-                                <span class="label">Favorite Year</span>
-                                <input type="number"
-                                       id="year"
-                                       placeholder="2007"
-                                       required
-                                       [(ngModel)]="year"
-                                       (ngModelChange)="valueChange('year', false)"
-                                       [ngFormControl]="regForm.find('year')">
+                        <div class="columns four">
+                            <div class="st-input">
+                                <label for="year">
+                                    <span class="label">Favorite Year</span>
+                                    <input type="number"
+                                           id="year"
+                                           placeholder="2007"
+                                           required
+                                           [(ngModel)]="year"
+                                           (ngModelChange)="valueChange('year', false)"
+                                           [ngFormControl]="regForm.find('year')">
                                 <span class="error-message" [ngClass]="{'red-c': !regForm.find('year').valid, 'green-c': regForm.find('year').valid && !regForm.find('year').hasError('pattern')}">
                                     <i class="material-icons">&#xE86C;</i>
                                     <span class="txt">Is AC and isn't in the future</span>
                                 </span>
-                            </label>
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="columns four">
-                        <div class="st-input">
-                            <label for="throne">
-                                <span class="label">Favorite episode of Game of Thrones</span>
-                                <input list="episodes"
-                                       id="throne"
-                                       placeholder="2007"
-                                       required
-                                       [(ngModel)]="throne"
-                                       (ngModelChange)="valueChange('throne', false)">
+                        <div class="columns four">
+                            <div class="st-input">
+                                <label for="throne">
+                                    <span class="label">Favorite episode of Game of Thrones</span>
+                                    <input list="episodes"
+                                           id="throne"
+                                           placeholder="Winter Is Coming"
+                                           required
+                                           [(ngModel)]="throne"
+                                           (ngModelChange)="valueChange('throne', false)">
 
-                                <datalist id="episodes">
-                                    <option value="Winter Is Coming">
-                                    <option value="The Kingsroad">
-                                    <option value="Lord Snow">
-                                    <option value="Cripples, Bastards, and Broken Things">
-                                    <option value="The Wolf and the Lion">
-                                    <option value="A Golden Crown">
-                                    <option value="You Win or You Die">
-                                    <option value="The Pointy End">
-                                    <option value="Baelor">
-                                    <option value="Fire and Blood">
-                                </datalist>
-                            </label>
+                                    <datalist id="episodes">
+                                        <option value="Winter Is Coming">
+                                        <option value="The Kingsroad">
+                                        <option value="Lord Snow">
+                                        <option value="Cripples, Bastards, and Broken Things">
+                                        <option value="The Wolf and the Lion">
+                                        <option value="A Golden Crown">
+                                        <option value="You Win or You Die">
+                                        <option value="The Pointy End">
+                                        <option value="Baelor">
+                                        <option value="Fire and Blood">
+                                    </datalist>
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>

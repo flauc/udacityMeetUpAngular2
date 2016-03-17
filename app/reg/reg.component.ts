@@ -47,7 +47,13 @@ export class RegComponent {
         this.regForm = formBuilder.group({
             'name': ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern('^[a-zA-Z ]+$')])],
             'email': ['', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9!._-]+[@]+[a-zA-Z.]+$')])],
-            'password': ['', Validators.compose([Validators.minLength(8), Validators.maxLength(1000), hasUpper, hasLower, hasDigit, hasSpecial])]
+            'password': ['', Validators.compose([Validators.minLength(8), Validators.maxLength(1000), hasUpper, hasLower, hasDigit, hasSpecial])],
+            'employer': ['', Validators.pattern('^[a-zA-Z0-9 .]+$')],
+            'position': ['', Validators.pattern('^[a-zA-Z0-9 .]+$')],
+            'fruit': ['', Validators.pattern('^[a-zA-Z ]+$')],
+            'num': ['', Validators.pattern('^[0-9]+$')],
+            'year': ['', Validators.pattern('\b(\d|[0-9][0-2]|[0-9][0-9][0-9]|[0-2][0][0-1][0-6])\b')],
+            'throne': ['', Validators.pattern('^[a-zA-Z0-9!._-]+[@]+[a-zA-Z.]+$')],
         });
 
         this.reqChecks = [
@@ -57,18 +63,31 @@ export class RegComponent {
         ];
 
         this.optChecks = [
-
+            {name: 'employer', value: this.regForm.find('employer').valid},
+            {name: 'position', value: this.regForm.find('position').valid},
+            {name: 'fruit', value: this.regForm.find('fruit').valid},
+            {name: 'num', value: this.regForm.find('num').valid},
+            {name: 'year', value: this.regForm.find('year').valid},
+            {name: 'throne', value: this.regForm.find('throne').valid}
         ]
     }
 
     // Locals
     regForm: ControlGroup;
 
+    // Required fields
     name: string;
     email: string;
     password: string;
-
     reqChecks: any;
+
+    // Optional fields
+    employer: string;
+    position: string;
+    fruit: string;
+    num: number;
+    year: number;
+    throne: string;
     optChecks: any;
 
     // Determines if the error-messages should be visible
