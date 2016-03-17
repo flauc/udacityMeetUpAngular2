@@ -16,7 +16,11 @@
             System.config({
                 defaultJSExtensions: true,
                 packages: {
-                    "/angular2": {"defaultExtension": false}
+                    "/angular2": {"defaultExtension": false},
+                    "/angular2-notifications": {"defaultExtension": false}
+                },
+                map: {
+                    'angular2-notifications': 'node_modules/angular2-notifications'
                 }
             });
         </script>

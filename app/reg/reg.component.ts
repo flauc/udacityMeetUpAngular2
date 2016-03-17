@@ -1,6 +1,7 @@
 import {Component} from 'angular2/core';
 import {CORE_DIRECTIVES, FORM_DIRECTIVES, FormBuilder, ControlGroup, Validators, Control} from 'angular2/common';
 import {ProgressComponent} from "../helpers/progress.component";
+import {NotificationsService} from "angular2-notifications/components";
 
 
 // Password Validators
@@ -42,7 +43,8 @@ function hasSpecial(control: Control): { [s: string]: boolean } {
 })
 export class RegComponent {
     constructor(
-        formBuilder: FormBuilder
+        formBuilder: FormBuilder,
+        private _notificationService: NotificationsService
     ) {
         this.regForm = formBuilder.group({
             'name': ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern('^[a-zA-Z ]+$')])],
@@ -111,6 +113,6 @@ export class RegComponent {
 
     onSubmit(value) {
         console.log(value);
-        console.log(this.regForm.find('name'))
+        this._notificationService.success('Success', 'You created an account!')
     }
 }
