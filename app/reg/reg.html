@@ -105,7 +105,7 @@
                 <div class="row">
                     <div class="columns four">
                         <div class="st-input">
-                            <label for="email">
+                            <label for="employer">
                                 <span class="label">Employer</span>
                                 <input type="text"
                                        id="employer"
@@ -116,26 +116,108 @@
                                        [ngFormControl]="regForm.find('employer')">
                                 <span class="error-message" [ngClass]="{'red-c': !regForm.find('employer').valid, 'green-c': regForm.find('employer').valid && !regForm.find('employer').hasError('pattern')}">
                                     <i class="material-icons">&#xE86C;</i>
-                                    <span class="txt">Has only letters dots and numbers.</span>
+                                    <span class="txt">Has only letters, spaces, dots and numbers.</span>
                                 </span>
                             </label>
                         </div>
                     </div>
                     <div class="columns four">
                         <div class="st-input">
-                            <label for="email">
-                                <span class="label">Employer</span>
+                            <label for="position">
+                                <span class="label">Position</span>
                                 <input type="text"
-                                       id="employer"
-                                       placeholder="Google"
+                                       id="position"
+                                       placeholder="Lion Tamer"
                                        required
-                                       [(ngModel)]="employer"
-                                       (ngModelChange)="valueChange('employer', false)"
-                                       [ngFormControl]="regForm.find('employer')">
-                                <span class="error-message" [ngClass]="{'red-c': !regForm.find('employer').valid, 'green-c': regForm.find('employer').valid && !regForm.find('employer').hasError('pattern')}">
+                                       [(ngModel)]="position"
+                                       (ngModelChange)="valueChange('position', false)"
+                                       [ngFormControl]="regForm.find('position')">
+                                <span class="error-message" [ngClass]="{'red-c': !regForm.find('position').valid, 'green-c': regForm.find('position').valid && !regForm.find('position').hasError('pattern')}">
                                     <i class="material-icons">&#xE86C;</i>
-                                    <span class="txt">Has only letters dots and numbers.</span>
+                                    <span class="txt">Has only letters, spaces, dots and numbers.</span>
                                 </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="columns four">
+                        <div class="st-input">
+                            <label for="fruit">
+                                <span class="label">Favorite Fruit</span>
+                                <input type="text"
+                                       id="fruit"
+                                       placeholder="Horned Melon"
+                                       required
+                                       [(ngModel)]="fruit"
+                                       (ngModelChange)="valueChange('fruit', false)"
+                                       [ngFormControl]="regForm.find('fruit')">
+                                <span class="error-message" [ngClass]="{'red-c': !regForm.find('fruit').valid, 'green-c': regForm.find('position').valid && !regForm.find('fruit').hasError('pattern')}">
+                                    <i class="material-icons">&#xE86C;</i>
+                                    <span class="txt">Has only letters and spaces.</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="columns four">
+                        <div class="st-input">
+                            <label for="num">
+                                <span class="label">Favorite Number</span>
+                                <input type="number"
+                                       id="num"
+                                       placeholder="25"
+                                       required
+                                       [(ngModel)]="num"
+                                       (ngModelChange)="valueChange('num', false)"
+                                       [ngFormControl]="regForm.find('num')">
+                                <span class="error-message" [ngClass]="{'red-c': !regForm.find('num').valid, 'green-c': regForm.find('num').valid && !regForm.find('num').hasError('pattern')}">
+                                    <i class="material-icons">&#xE86C;</i>
+                                    <span class="txt">Is whole number</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="columns four">
+                        <div class="st-input">
+                            <label for="year">
+                                <span class="label">Favorite Year</span>
+                                <input type="number"
+                                       id="year"
+                                       placeholder="2007"
+                                       required
+                                       [(ngModel)]="year"
+                                       (ngModelChange)="valueChange('year', false)"
+                                       [ngFormControl]="regForm.find('year')">
+                                <span class="error-message" [ngClass]="{'red-c': !regForm.find('year').valid, 'green-c': regForm.find('year').valid && !regForm.find('year').hasError('pattern')}">
+                                    <i class="material-icons">&#xE86C;</i>
+                                    <span class="txt">Is AC and isn't in the future</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="columns four">
+                        <div class="st-input">
+                            <label for="throne">
+                                <span class="label">Favorite episode of Game of Thrones</span>
+                                <input list="episodes"
+                                       id="throne"
+                                       placeholder="2007"
+                                       required
+                                       [(ngModel)]="throne"
+                                       (ngModelChange)="valueChange('throne', false)">
+
+                                <datalist id="episodes">
+                                    <option value="Winter Is Coming">
+                                    <option value="The Kingsroad">
+                                    <option value="Lord Snow">
+                                    <option value="Cripples, Bastards, and Broken Things">
+                                    <option value="The Wolf and the Lion">
+                                    <option value="A Golden Crown">
+                                    <option value="You Win or You Die">
+                                    <option value="The Pointy End">
+                                    <option value="Baelor">
+                                    <option value="Fire and Blood">
+                                </datalist>
                             </label>
                         </div>
                     </div>

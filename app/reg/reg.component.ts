@@ -54,6 +54,10 @@ export class RegComponent {
             {name: 'name', value: this.regForm.find('name').valid},
             {name: 'email', value: this.regForm.find('email').valid},
             {name: 'password', value: this.regForm.find('password').valid}
+        ];
+
+        this.optChecks = [
+
         ]
     }
 

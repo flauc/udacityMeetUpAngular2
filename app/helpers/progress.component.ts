@@ -16,7 +16,6 @@ export class ProgressComponent {
 
     ngOnInit() {
         this.progressWidth = 100/this.checks.length;
-        console.log(this.checks)
     }
 
     // Inputs
