@@ -122,7 +122,7 @@
                                            [(ngModel)]="employer"
                                            (ngModelChange)="valueChange('employer', false)"
                                            [ngFormControl]="regForm.find('employer')">
-                                <span class="error-message" [ngClass]="{'red-c': !regForm.find('employer').valid, 'green-c': regForm.find('employer').valid && !regForm.find('employer').hasError('pattern')}">
+                                <span [hidden]="showHelpers('employer')" class="error-message" [ngClass]="{'red-c': !regForm.find('employer').valid, 'green-c': regForm.find('employer').valid && !regForm.find('employer').hasError('pattern')}">
                                     <i class="material-icons">&#xE86C;</i>
                                     <span class="txt">Has only letters, spaces, dots and numbers.</span>
                                 </span>
@@ -139,7 +139,7 @@
                                            [(ngModel)]="position"
                                            (ngModelChange)="valueChange('position', false)"
                                            [ngFormControl]="regForm.find('position')">
-                                <span class="error-message" [ngClass]="{'red-c': !regForm.find('position').valid, 'green-c': regForm.find('position').valid && !regForm.find('position').hasError('pattern')}">
+                                <span [hidden]="showHelpers('position')" class="error-message" [ngClass]="{'red-c': !regForm.find('position').valid, 'green-c': regForm.find('position').valid && !regForm.find('position').hasError('pattern')}">
                                     <i class="material-icons">&#xE86C;</i>
                                     <span class="txt">Has only letters, spaces, dots and numbers.</span>
                                 </span>
@@ -156,7 +156,7 @@
                                            [(ngModel)]="fruit"
                                            (ngModelChange)="valueChange('fruit', false)"
                                            [ngFormControl]="regForm.find('fruit')">
-                                <span class="error-message" [ngClass]="{'red-c': !regForm.find('fruit').valid, 'green-c': regForm.find('fruit').valid && !regForm.find('fruit').hasError('pattern')}">
+                                <span [hidden]="showHelpers('fruit')" class="error-message" [ngClass]="{'red-c': !regForm.find('fruit').valid, 'green-c': regForm.find('fruit').valid && !regForm.find('fruit').hasError('pattern')}">
                                     <i class="material-icons">&#xE86C;</i>
                                     <span class="txt">Has only letters and spaces.</span>
                                 </span>
@@ -175,7 +175,7 @@
                                            [(ngModel)]="num"
                                            (ngModelChange)="valueChange('num', false)"
                                            [ngFormControl]="regForm.find('num')">
-                                <span class="error-message" [ngClass]="{'red-c': !regForm.find('num').valid, 'green-c': regForm.find('num').valid && !regForm.find('num').hasError('pattern')}">
+                                <span [hidden]="showHelpers('num')" class="error-message" [ngClass]="{'red-c': !regForm.find('num').valid, 'green-c': regForm.find('num').valid && !regForm.find('num').hasError('pattern')}">
                                     <i class="material-icons">&#xE86C;</i>
                                     <span class="txt">Is whole number</span>
                                 </span>
@@ -192,7 +192,7 @@
                                            [(ngModel)]="year"
                                            (ngModelChange)="valueChange('year', false)"
                                            [ngFormControl]="regForm.find('year')">
-                                <span class="error-message" [ngClass]="{'red-c': !regForm.find('year').valid, 'green-c': regForm.find('year').valid && !regForm.find('year').hasError('pattern')}">
+                                <span [hidden]="showHelpers('year')" class="error-message" [ngClass]="{'red-c': !regForm.find('year').valid, 'green-c': regForm.find('year').valid && !regForm.find('year').hasError('pattern')}">
                                     <i class="material-icons">&#xE86C;</i>
                                     <span class="txt">Is AC and isn't in the future</span>
                                 </span>

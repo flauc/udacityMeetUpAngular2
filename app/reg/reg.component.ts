@@ -95,7 +95,15 @@ export class RegComponent {
     // Determines if the error-messages should be visible
     showHelpers(value:string) {
         let temp = this.regForm.find(value);
-        return temp.pristine || temp.valid;
+        if(value == 'name') {
+            console.log('pris: ', temp.pristine);
+            console.log('priv', !(temp.touched && !temp.valid));
+        }
+
+        if(temp.touched && !temp.valid) return false;
+        else if(temp.pristine) return true;
+        else if(!temp.valid) return false;
+        else if(temp.valid) return true;
     }
 
     valueChange(name: string, checkReq: boolean) {
