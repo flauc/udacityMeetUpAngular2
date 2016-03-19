@@ -50,13 +50,13 @@
 
                             </div>
 
-                            <div class="row">
+                            <div class="row margin-top">
 
                                 <div class="columns six">
                                     <div class="st-input">
                                         <label for="start">
                                             <span class="label">Starting Time</span>
-                                            <input type="datetime"
+                                            <input type="datetime-local"
                                                    id="start"
                                                    required
                                                    [(ngModel)]="start">
@@ -68,12 +68,28 @@
                                     <div class="st-input">
                                         <label for="end">
                                             <span class="label">Ending Time</span>
-                                            <input type="datetime"
+                                            <input type="datetime-local"
                                                    id="end"
                                                    required
                                                    [(ngModel)]="end">
                                         </label>
                                     </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row margin-top">
+
+                                <div class="st-input">
+                                    <label for="start">
+                                        <span class="label">Location</span>
+                                        <input type="text"
+                                               id="location"
+                                               placeholder="Some Location"
+                                               required
+                                               onFocus="geolocate()"
+                                               [(ngModel)]="location">
+                                    </label>
                                 </div>
 
                             </div>
@@ -86,12 +102,23 @@
             <div class="columns six">
 
                 <div class="row">
-                    <h3 class="form-title">Meets</h3>
-                    <div class="form-block">
-                        <div class="meet" *ngFor="#meet of meets">
-                            <h4>{{meet.name}}</h4>
+
+                    <div class="row">
+                        <h3 class="form-title">Meets</h3>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-block meet-block" *ngFor="#meet of meets">
+                            <div class="meet">
+                                <h4>Name: {{meet.name}}</h4>
+                                <p><b>Type:</b> {{meet.type}}</p>
+                                <p *ngIf="meet.message"><b>Messages</b> {{meet.message}}</p>
+                                <p><b>Starting Time:</b> {{meet.start | date:"MM/dd/yy - hh:mm:ss"}}</p>
+                                <p><b>Ending Time:</b> {{meet.end | date:"MM/dd/yy - hh:mm:ss"}}</p>
+                            </div>
                         </div>
                     </div>
+
                 </div>
 
             </div>
@@ -100,3 +127,4 @@
 
     </div>
 </div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtKILQz9TVnA386oURUIoGF9QnAew8lw8&libraries=places&callback=initAutocomplete" async defer></script>
