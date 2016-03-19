@@ -87,6 +87,8 @@ export class MeetsComponent {
             location: this.location,
             message: this.message
         });
+
+        this._notificationService.success('Success', 'Meet created!')
     }
 
     // Determines if the error-messages should be visible

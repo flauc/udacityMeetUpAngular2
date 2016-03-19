@@ -18,3 +18,7 @@ You can run the application using lite-server:
 ```
 npm run lite
 ```
+
+## App Page
+
+You can check out the app here [Link](http://flauc.github.io/udacityMeetUpAngular2)

@@ -115,7 +115,6 @@ export class RegComponent {
     }
 
     onSubmit(value) {
-        console.log(value);
         this._notificationService.success('Success', 'You created an account!')
     }
 }
