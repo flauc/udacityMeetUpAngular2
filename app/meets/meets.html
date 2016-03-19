@@ -20,6 +20,7 @@
                                             <span class="label">Event Name</span>
                                             <input type="text"
                                                    id="name"
+                                                   name="name"
                                                    placeholder="My Party"
                                                    required
                                                    autofocus
@@ -40,6 +41,7 @@
                                             <span class="label">Event Type</span>
                                             <input list="types"
                                                    id="type"
+                                                   name="type"
                                                    placeholder="Birthday party"
                                                    required
                                                    [(ngModel)]="type"
@@ -110,6 +112,8 @@
                                             <span class="label">Host</span>
                                             <input type="text"
                                                    id="host"
+                                                   name="host"
+                                                   autocomplete="fname"
                                                    placeholder="Cool Guy"
                                                    required
                                                    [(ngModel)]="host"
@@ -129,8 +133,10 @@
                                             <span class="label">Location</span>
                                             <input type="text"
                                                    id="location"
+                                                   name="location"
                                                    placeholder="Some Location"
                                                    required
+                                                   autocomplete="shipping street-address"
                                                    (onFocus)="geolocate()"
                                                    [(ngModel)]="location"
                                                    (ngModelChange)="valueChange('location')"

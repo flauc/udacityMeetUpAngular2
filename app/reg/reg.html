@@ -17,6 +17,8 @@
                                     <span class="label">Full Name</span>
                                     <input type="text"
                                            id="name"
+                                           name="name"
+                                           autocomplete="name"
                                            placeholder="John Dou"
                                            required
                                            autofocus
@@ -47,6 +49,8 @@
                                     <span class="label">Email</span>
                                     <input type="email"
                                            id="email"
+                                           name="email"
+                                           autocomplete="email"
                                            placeholder="john.dou@example.com"
                                            required
                                            [(ngModel)]="email"
@@ -65,6 +69,7 @@
                                 <label for="password">
                                     <span class="label">Password</span>
                                     <input type="password"
+                                           name="password"
                                            id="password"
                                            required
                                            [(ngModel)]="password"
