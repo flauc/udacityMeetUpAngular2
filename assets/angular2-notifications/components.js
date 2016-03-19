@@ -1,0 +1,2 @@
+exports.SimpleNotificationsComponent = require('./lib/simpleNotifications.component').SimpleNotificationsComponent;
+exports.NotificationsService = require('./lib/notifications.service').NotificationsService;

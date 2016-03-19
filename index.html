@@ -1,1 +1,40 @@
-<p>bla</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meet Up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.33.3/es6-shim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.20/system-polyfills.js"></script>
+    <script src="https://code.angularjs.org/2.0.0-beta.7/angular2-polyfills.js"></script>
+    <script src="https://code.angularjs.org/tools/system.js"></script>
+    <script src="https://code.angularjs.org/tools/typescript.js"></script>
+    <script src="https://code.angularjs.org/2.0.0-beta.7/Rx.js"></script>
+    <script src="https://code.angularjs.org/2.0.0-beta.7/angular2.js"></script>
+    <script src="https://code.angularjs.org/2.0.0-beta.7/router.js"></script>
+    <script src="https://code.angularjs.org/2.0.0-beta.7/http.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtKILQz9TVnA386oURUIoGF9QnAew8lw8&libraries=places" async defer></script>
+
+    <script>
+        System.config({
+            packages: {
+                app: {
+                    format: 'register',
+                    defaultExtension: 'js'
+                }
+            },
+            map: {
+                'angular2-notifications': 'assets/angular2-notifications'
+            }
+
+        });
+        System.import('app/boot')
+                .then(null, console.error.bind(console));
+    </script>
+</head>
+
+<body>
+<app></app>
+</body>
+
+</html>

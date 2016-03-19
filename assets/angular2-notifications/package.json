@@ -1,0 +1,86 @@
+{
+  "_args": [
+    [
+      "angular2-notifications",
+      "C:\\Users\\filip\\Google Drive\\Development\\Projects\\Udacity\\SeniorWebDev\\MeetUpAngular2"
+    ]
+  ],
+  "_from": "angular2-notifications@*",
+  "_id": "angular2-notifications@0.1.29",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/angular2-notifications",
+  "_nodeVersion": "5.5.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/angular2-notifications-0.1.29.tgz_1457984854714_0.8704137427266687"
+  },
+  "_npmUser": {
+    "email": "filip.lauc93@gmail.com",
+    "name": "flauc"
+  },
+  "_npmVersion": "3.3.12",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "angular2-notifications",
+    "raw": "angular2-notifications",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "*",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_shasum": "9cf16d18d9439881b1bd2e65df4b2e316118eaa3",
+  "_shrinkwrap": null,
+  "_spec": "angular2-notifications",
+  "_where": "C:\\Users\\filip\\Google Drive\\Development\\Projects\\Udacity\\SeniorWebDev\\MeetUpAngular2",
+  "author": {
+    "name": "filip.lauc93@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/flauc/angular2-notifications/issues"
+  },
+  "dependencies": {
+    "angular2": "^2.0.0-beta.7"
+  },
+  "description": "An easy to use notification library for angular 2",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "typescript": "^1.7.5"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "9cf16d18d9439881b1bd2e65df4b2e316118eaa3",
+    "tarball": "http://registry.npmjs.org/angular2-notifications/-/angular2-notifications-0.1.29.tgz"
+  },
+  "gitHead": "9009997e784846f49753775f5e755db5b53659c2",
+  "homepage": "https://github.com/flauc/angular2-notifications",
+  "keywords": [
+    "2",
+    "Angular",
+    "Library",
+    "Notification",
+    "Notifications",
+    "Toast"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "flauc",
+      "email": "filip.lauc93@gmail.com"
+    }
+  ],
+  "name": "angular2-notifications",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flauc/angular2-notifications.git"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "version": "0.1.29"
+}
