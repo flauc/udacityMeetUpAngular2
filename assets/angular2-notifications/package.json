@@ -1,11 +1,11 @@
 {
   "_args": [
     [
-      "angular2-notifications",
-      "C:\\Users\\filip\\Google Drive\\Development\\Projects\\Udacity\\SeniorWebDev\\MeetUpAngular2"
+      "angular2-notifications@^0.1.29",
+      "C:\\Users\\filip\\Google Drive\\Development\\Projects\\Udacity\\SeniorWebDev\\MeetUpAngular2\\gh-pages"
     ]
   ],
-  "_from": "angular2-notifications@*",
+  "_from": "angular2-notifications@>=0.1.29 <0.2.0",
   "_id": "angular2-notifications@0.1.29",
   "_inCache": true,
   "_installable": true,
@@ -23,10 +23,10 @@
   "_phantomChildren": {},
   "_requested": {
     "name": "angular2-notifications",
-    "raw": "angular2-notifications",
-    "rawSpec": "",
+    "raw": "angular2-notifications@^0.1.29",
+    "rawSpec": "^0.1.29",
     "scope": null,
-    "spec": "*",
+    "spec": ">=0.1.29 <0.2.0",
     "type": "range"
   },
   "_requiredBy": [
@@ -34,8 +34,8 @@
   ],
   "_shasum": "9cf16d18d9439881b1bd2e65df4b2e316118eaa3",
   "_shrinkwrap": null,
-  "_spec": "angular2-notifications",
-  "_where": "C:\\Users\\filip\\Google Drive\\Development\\Projects\\Udacity\\SeniorWebDev\\MeetUpAngular2",
+  "_spec": "angular2-notifications@^0.1.29",
+  "_where": "C:\\Users\\filip\\Google Drive\\Development\\Projects\\Udacity\\SeniorWebDev\\MeetUpAngular2\\gh-pages",
   "author": {
     "name": "filip.lauc93@gmail.com"
   },
