@@ -11,10 +11,6 @@
         <script src="node_modules/es6-shim/es6-shim.min.js"></script>
         <script src="node_modules/systemjs/dist/system.src.js"></script>
         <script src="node_modules/angular2/bundles/http.min.js"></script>
-        <script src="node_modules/rxjs/bundles/Rx.js"></script>
-        <script src="node_modules/angular2/bundles/angular2.js"></script>
-        <script src="node_modules/angular2/bundles/router.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtKILQz9TVnA386oURUIoGF9QnAew8lw8&libraries=places" async defer></script>
 
         <script>
             System.config({
@@ -28,6 +24,12 @@
                 }
             });
         </script>
+
+        <script src="node_modules/rxjs/bundles/Rx.js"></script>
+        <script src="node_modules/angular2/bundles/angular2.js"></script>
+        <script src="node_modules/angular2/bundles/router.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtKILQz9TVnA386oURUIoGF9QnAew8lw8&libraries=places" async defer></script>
+
         <script>
             System.import('app/boot').catch(console.log.bind(console));
         </script>
