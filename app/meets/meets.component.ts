@@ -21,11 +21,14 @@ export class MeetsComponent {
         private _notificationService: NotificationsService
     ) {
         this.meetForm = formBuilder.group({
-            'name': ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50), Validators.pattern('^[a-zA-Z ]+$')])],
-            'host': ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(50), Validators.pattern('^[a-zA-Z ]+$')])],
+            'name': ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(50), Validators.pattern('^[a-zA-Z ]+$')])],
+            'host': ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(50), Validators.pattern('^[a-zA-Z ]+$')])],
             'start': ['', Validators.required],
-            'end': ['', Validators.required]
+            'end': ['', Validators.required],
+            'location': ['', Validators.required]
         });
+
+
 
         this.meetChecks = [
             {name: 'name', value: this.meetForm.find('name').valid},
@@ -36,48 +39,14 @@ export class MeetsComponent {
 
         // Add a few meets
         this.meets.push(
-            {name: 'Some Event', type: 'Party', host: 'Man', start: new Date("November 14 2016 09:13:00"), end: new Date("November 14 2016 11:13:00")},
-            {name: 'My Party', type: 'Birthday Party', host: 'John', start: new Date("October 9 2016 17:00:00"), end: new Date("October 10 2016 09:00:00")},
-            {name: 'Fishing', type: 'Fishing', host: 'John', start: new Date("October 11 2016 09:00:00"), end: new Date("October 15 2016 09:00:00")}
+            {name: 'Some Event', type: 'Party', host: 'Man', start: new Date("November 14 2016 09:13:00"), end: new Date("November 14 2016 11:13:00"), location: 'Osijek, Croatia'},
+            {name: 'My Party', type: 'Birthday Party', host: 'John', start: new Date("October 9 2016 17:00:00"), end: new Date("October 10 2016 09:00:00"), location: 'Osijek, Croatia'},
+            {name: 'Fishing', type: 'Fishing', host: 'John', start: new Date("October 11 2016 09:00:00"), end: new Date("October 15 2016 09:00:00"), location: 'Osijek, Croatia', message: 'Worms have feelings two.'}
         )
     }
 
     ngOnInit() {
-        var placeSearch, autocomplete;
-        var componentForm = {
-            street_number: 'short_name',
-            route: 'long_name',
-            locality: 'long_name',
-            administrative_area_level_1: 'short_name',
-            country: 'long_name',
-            postal_code: 'short_name'
-        };
-
-
-        function initAutocomplete() {
-            // Create the autocomplete object, restricting the search to geographical
-            // location types.
-            autocomplete = new google.maps.places.Autocomplete(
-                /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
-                {types: ['geocode']});
-        }
-
-        function geolocate() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    var geolocation = {
-                        lat: position.coords.latitude,
-                        lng: position.coords.longitude
-                    };
-                    var circle = new google.maps.Circle({
-                        center: geolocation,
-                        radius: position.coords.accuracy
-                    });
-                    autocomplete.setBounds(circle.getBounds());
-                });
-            }
-        }
-
+        this.initAutocomplete();
     }
 
     // Locals
@@ -88,12 +57,31 @@ export class MeetsComponent {
     // Meet Model
     name: string;
     type: string;
+    host: string;
     start: Date;
     end: Date;
     location: any;
     message: string;
 
     onSubmit() {
+        this.meets.push({
+            name: this.name,
+            type: this.type,
+            host: this.host,
+            start: this.start,
+            end: this.end,
+            location: this.location,
+            message: this.message
+        });
+
+        // Clear the model
+        this.name = null;
+        this.type = null;
+        this.host = null;
+        this.start = null;
+        this.end = null;
+        this.location = null;
+        this.message = null;
     }
 
     // Determines if the error-messages should be visible
@@ -111,5 +99,34 @@ export class MeetsComponent {
         this.meetChecks.forEach(a=> {
             if(a.name == name && a.value != temp) a.value = temp
         })
+    }
+
+
+    // Google maps
+    private autocomplete;
+
+
+    geolocate() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var geolocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                var circle = new google.maps.Circle({
+                    center: geolocation,
+                    radius: position.coords.accuracy
+                });
+                this.autocomplete.setBounds(circle.getBounds());
+            });
+        }
+    }
+
+    initAutocomplete() {
+        // Create the autocomplete object, restricting the search to geographical
+        // location types.
+        this.autocomplete = new google.maps.places.Autocomplete(
+            (document.getElementById('location')),
+            {types: ['geocode']});
     }
 }

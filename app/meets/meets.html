@@ -23,7 +23,13 @@
                                                    placeholder="My Party"
                                                    required
                                                    autofocus
-                                                   [(ngModel)]="name">
+                                                   [(ngModel)]="name"
+                                                   (ngModelChange)="valueChange('name', false)"
+                                                   [ngFormControl]="meetForm.find('name')">
+                                            <span [hidden]="showHelpers('name')" class="error-message" [ngClass]="{'red-c': !meetForm.find('name').valid, 'green-c': meetForm.find('name').valid}">
+                                                <i class="material-icons">&#xE86C;</i>
+                                                <span class="txt">Name is required</span>
+                                            </span>
                                         </label>
                                     </div>
                                 </div>
@@ -36,7 +42,13 @@
                                                    id="type"
                                                    placeholder="Birthday party"
                                                    required
-                                                   [(ngModel)]="type">
+                                                   [(ngModel)]="type"
+                                                   (ngModelChange)="valueChange('type', false)"
+                                                   [ngFormControl]="meetForm.find('type')">
+                                            <span [hidden]="showHelpers('type')" class="error-message" [ngClass]="{'red-c': !meetForm.find('type').valid, 'green-c': meetForm.find('type').valid}">
+                                                <i class="material-icons">&#xE86C;</i>
+                                                <span class="txt">Type is required</span>
+                                            </span>
 
                                             <datalist id="types">
                                                 <option value="birthday party">
@@ -59,7 +71,13 @@
                                             <input type="datetime-local"
                                                    id="start"
                                                    required
-                                                   [(ngModel)]="start">
+                                                   [(ngModel)]="start"
+                                                   (ngModelChange)="valueChange('start', false)"
+                                                   [ngFormControl]="meetForm.find('start')">
+                                            <span [hidden]="showHelpers('start')" class="error-message" [ngClass]="{'red-c': !meetForm.find('start').valid, 'green-c': meetForm.find('start').valid}">
+                                                <i class="material-icons">&#xE86C;</i>
+                                                <span class="txt">Date is required</span>
+                                            </span>
                                         </label>
                                     </div>
                                 </div>
@@ -71,7 +89,56 @@
                                             <input type="datetime-local"
                                                    id="end"
                                                    required
-                                                   [(ngModel)]="end">
+                                                   [(ngModel)]="end"
+                                                   (ngModelChange)="valueChange('end', false)"
+                                                   [ngFormControl]="meetForm.find('end')">
+                                            <span>
+                                                <i class="material-icons">&#xE86C;</i>
+                                                <span class="txt">Event must end later then it starts</span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row margin-top">
+
+                                <div class="columns six">
+                                    <div class="st-input">
+                                        <label for="host">
+                                            <span class="label">Host</span>
+                                            <input type="text"
+                                                   id="host"
+                                                   placeholder="Cool Guy"
+                                                   required
+                                                   [(ngModel)]="host"
+                                                   (ngModelChange)="valueChange('host', false)"
+                                                   [ngFormControl]="meetForm.find('host')">
+                                            <span [hidden]="showHelpers('host')" class="error-message" [ngClass]="{'red-c': !meetForm.find('host').valid, 'green-c': meetForm.find('host').valid}">
+                                                <i class="material-icons">&#xE86C;</i>
+                                                <span class="txt">Host is required</span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="columns six">
+                                    <div class="st-input">
+                                        <label for="start">
+                                            <span class="label">Location</span>
+                                            <input type="text"
+                                                   id="location"
+                                                   placeholder="Some Location"
+                                                   required
+                                                   (onFocus)="geolocate()"
+                                                   [(ngModel)]="location"
+                                                   (ngModelChange)="valueChange('location', false)"
+                                                   [ngFormControl]="meetForm.find('location')">
+                                            <span [hidden]="showHelpers('location')" class="error-message" [ngClass]="{'red-c': !meetForm.find('location').valid, 'green-c': meetForm.find('location').valid}">
+                                                <i class="material-icons">&#xE86C;</i>
+                                                <span class="txt">Location is required</span>
+                                            </span>
                                         </label>
                                     </div>
                                 </div>
@@ -81,14 +148,13 @@
                             <div class="row margin-top">
 
                                 <div class="st-input">
-                                    <label for="start">
-                                        <span class="label">Location</span>
-                                        <input type="text"
-                                               id="location"
-                                               placeholder="Some Location"
-                                               required
-                                               onFocus="geolocate()"
-                                               [(ngModel)]="location">
+                                    <label for="message">
+                                        <span class="label">Message</span>
+                                        <textarea
+                                                id="message"
+                                                rows="5"
+                                                placeholder="A Message for the etenders"
+                                                [(ngModel)]="message"></textarea>
                                     </label>
                                 </div>
 
@@ -97,6 +163,11 @@
                         </div>
                     </form>
                 </div>
+
+                <div class="row">
+                    <button type="submit" class="st-button" [disabled]="!meetForm.valid">Submit</button>
+                </div>
+
             </div>
 
             <div class="columns six">
@@ -110,9 +181,10 @@
                     <div class="row">
                         <div class="form-block meet-block" *ngFor="#meet of meets">
                             <div class="meet">
-                                <h4>Name: {{meet.name}}</h4>
+                                <p><b>Name:</b> {{meet.name}}</p>
                                 <p><b>Type:</b> {{meet.type}}</p>
-                                <p *ngIf="meet.message"><b>Messages</b> {{meet.message}}</p>
+                                <p><b>Location:</b> {{meet.location}}</p>
+                                <p *ngIf="meet.message"><b>Messages:</b> {{meet.message}}</p>
                                 <p><b>Starting Time:</b> {{meet.start | date:"MM/dd/yy - hh:mm:ss"}}</p>
                                 <p><b>Ending Time:</b> {{meet.end | date:"MM/dd/yy - hh:mm:ss"}}</p>
                             </div>
@@ -127,4 +199,3 @@
 
     </div>
 </div>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtKILQz9TVnA386oURUIoGF9QnAew8lw8&libraries=places&callback=initAutocomplete" async defer></script>
