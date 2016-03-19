@@ -107,7 +107,7 @@ var MeetsComponent = (function () {
                 common_1.FORM_DIRECTIVES,
                 progress_component_1.ProgressComponent
             ],
-            templateUrl: 'app/meets/meets.html'
+            templateUrl: 'http://flauc.github.io/udacityMeetUpAngular2/app/meets/meets.html'
         }), 
         __metadata('design:paramtypes', [common_1.FormBuilder, components_1.NotificationsService])
     ], MeetsComponent);

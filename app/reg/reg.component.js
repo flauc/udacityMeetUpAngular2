@@ -92,7 +92,7 @@ var RegComponent = (function () {
     RegComponent = __decorate([
         core_1.Component({
             selector: 'app-reg',
-            templateUrl: 'app/reg/reg.html',
+            templateUrl: 'http://flauc.github.io/udacityMeetUpAngular2/app/reg/reg.html',
             directives: [
                 common_1.CORE_DIRECTIVES,
                 common_1.FORM_DIRECTIVES,
