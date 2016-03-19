@@ -31,7 +31,14 @@ export class MeetsComponent {
             {name: 'host', value: this.meetForm.find('host').valid},
             {name: 'start', value: this.meetForm.find('start').valid},
             {name: 'end', value: this.meetForm.find('end').valid},
-        ]
+        ];
+
+        // Add a few meets
+        this.meets.push(
+            {name: 'Some Event', type: 'Party', host: 'Man', start: new Date("November 14 2016 09:13:00"), end: new Date("November 14 2016 11:13:00")},
+            {name: 'My Party', type: 'Birthday Party', host: 'John', start: new Date("October 9 2016 17:00:00"), end: new Date("October 10 2016 09:00:00")},
+            {name: 'Fishing', type: 'Fishing', host: 'John', start: new Date("October 11 2016 09:00:00"), end: new Date("October 15 2016 09:00:00")}
+        )
     }
 
     // Locals
@@ -39,7 +46,7 @@ export class MeetsComponent {
     meetForm: ControlGroup;
     meetChecks: any;
     
-    // Meet
+    // Meet Model
     name: string;
     type: string;
     start: Date;

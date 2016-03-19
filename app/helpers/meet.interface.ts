@@ -4,6 +4,6 @@ export interface Meet {
     host: string
     start: Date
     end: Date
-    location: any
+    location?: any
     message?: string
 }
