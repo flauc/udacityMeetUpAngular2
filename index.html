@@ -17,16 +17,14 @@
 
     <script>
         System.config({
+            defaultJSExtensions: true,
             packages: {
-                app: {
-                    format: 'register',
-                    defaultExtension: 'js'
-                }
+                "/angular2": {"defaultExtension": false},
+                "/angular2-notifications": {"defaultExtension": false}
             },
             map: {
                 'angular2-notifications': 'assets/angular2-notifications'
             }
-
         });
         System.import('app/boot')
                 .then(null, console.error.bind(console));
