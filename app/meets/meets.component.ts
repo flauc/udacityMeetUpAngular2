@@ -23,9 +23,10 @@ export class MeetsComponent {
         this.meetForm = formBuilder.group({
             'name': ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(50), Validators.pattern('^[a-zA-Z ]+$')])],
             'host': ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(50), Validators.pattern('^[a-zA-Z ]+$')])],
+            'type': ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(50), Validators.pattern('^[a-zA-Z ]+$')])],
+            'location': ['', Validators.required],
             'start': ['', Validators.required],
-            'end': ['', Validators.required],
-            'location': ['', Validators.required]
+            'end': ['', Validators.required]
         });
 
 
@@ -34,6 +35,8 @@ export class MeetsComponent {
             {name: 'name', value: this.meetForm.find('name').valid},
             {name: 'host', value: this.meetForm.find('host').valid},
             {name: 'start', value: this.meetForm.find('start').valid},
+            {name: 'location', value: this.meetForm.find('location').valid},
+            {name: 'type', value: this.meetForm.find('type').valid},
             {name: 'end', value: this.meetForm.find('end').valid},
         ];
 
@@ -58,8 +61,8 @@ export class MeetsComponent {
     name: string;
     type: string;
     host: string;
-    start: Date;
-    end: Date;
+    start: any;
+    end: any;
     location: any;
     message: string;
 
@@ -68,20 +71,11 @@ export class MeetsComponent {
             name: this.name,
             type: this.type,
             host: this.host,
-            start: this.start,
-            end: this.end,
+            start: new Date(this.start),
+            end: new Date(this.end),
             location: this.location,
             message: this.message
         });
-
-        // Clear the model
-        this.name = null;
-        this.type = null;
-        this.host = null;
-        this.start = null;
-        this.end = null;
-        this.location = null;
-        this.message = null;
     }
 
     // Determines if the error-messages should be visible
@@ -99,6 +93,10 @@ export class MeetsComponent {
         this.meetChecks.forEach(a=> {
             if(a.name == name && a.value != temp) a.value = temp
         })
+    }
+    
+    validEnd() {
+        return this.start < this.end;
     }
 
 
