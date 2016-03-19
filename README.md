@@ -10,12 +10,11 @@ To run the app clone the repository and run:
 ```
 npm install
 ```
-You can build the app using this command:
+This command compiles the stylus files and transpiles all the ts files:
 ```
-npm build
+npm run build
 ```
-This command compiles the stylus files and transpiles all the ts files.
 You can run the application using lite-server:
 ```
-npm lite
+npm run lite
 ```
