@@ -4,7 +4,10 @@
   "description": "A project for the Udacity Senior Web Developer Nanodegree.",
   "main": "index.js",
   "scripts": {
-    "lite": "lite-server"
+    "lite": "lite-server",
+    "tsc": "tsc",
+    "stylus": "gulp stylus",
+    "build": "concurrently \"npm run tsc\" \"npm run stylus\" "
   },
   "keywords": [
     "Udacity",
@@ -25,6 +28,7 @@
     "zone.js": "0.5.15"
   },
   "devDependencies": {
+    "concurrently": "^2.0.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-stylus": "^2.3.1",
