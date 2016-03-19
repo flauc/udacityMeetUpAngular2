@@ -1,0 +1,82 @@
+<div class="page">
+    <div class="container">
+
+        <div class="row">
+            <h3 class="form-title">Event Creation</h3>
+        </div>
+
+        <div class="row">
+            <form [ngFormModel]="meetForm" (ngSubmit)="onSubmit()" novalidate>
+                <div class="form-block">
+
+                    <div class="row">
+
+                        <div class="columns six">
+                            <div class="st-input">
+                                <label for="name">
+                                    <span class="label">Event Name</span>
+                                    <input type="text"
+                                           id="name"
+                                           placeholder="My Party"
+                                           required
+                                           autofocus
+                                           [(ngModel)]="name">
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="columns six">
+                            <div class="st-input">
+                                <label for="type">
+                                    <span class="label">Event Type</span>
+                                    <input list="types"
+                                           id="type"
+                                           placeholder="My Party"
+                                           required
+                                           [(ngModel)]="type">
+
+                                    <datalist id="types">
+                                        <option value="birthday party">
+                                        <option value="conference talk">
+                                        <option value="wedding">
+                                    </datalist>
+
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="columns six">
+                            <div class="st-input">
+                                <label for="start">
+                                    <span class="label">Starting Time</span>
+                                    <input type="datetime"
+                                           id="start"
+                                           required
+                                           [(ngModel)]="start">
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="columns six">
+                            <div class="st-input">
+                                <label for="end">
+                                    <span class="label">Ending Time</span>
+                                    <input type="datetime"
+                                           id="end"
+                                           required
+                                           [(ngModel)]="end">
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -10,13 +10,13 @@ import {SimpleNotificationsComponent} from "angular2-notifications/components";
         <header>
             <nav class="sl-nav">
                 <ul>
-                    <li>
+                    <li [routerLink]="['Reg']">
                         <i class="material-icons">&#xE87C;</i>
-                        <a [routerLink]="['Reg']">Create Account</a>
+                        <span>Create Account</span>
                     </li>
-                    <li>
+                    <li [routerLink]="['Meets']">
                         <i class="material-icons">&#xE567;</i>
-                        <a [routerLink]="['Meets']">Meets</a>
+                        <span>Meets</span>
                     </li>
                 </ul>
             </nav>
