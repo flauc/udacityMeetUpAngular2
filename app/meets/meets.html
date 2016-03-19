@@ -24,7 +24,7 @@
                                                    required
                                                    autofocus
                                                    [(ngModel)]="name"
-                                                   (ngModelChange)="valueChange('name', false)"
+                                                   (ngModelChange)="valueChange('name')"
                                                    [ngFormControl]="meetForm.find('name')">
                                             <span [hidden]="showHelpers('name')" class="error-message" [ngClass]="{'red-c': !meetForm.find('name').valid, 'green-c': meetForm.find('name').valid}">
                                                 <i class="material-icons">&#xE86C;</i>
@@ -43,7 +43,7 @@
                                                    placeholder="Birthday party"
                                                    required
                                                    [(ngModel)]="type"
-                                                   (ngModelChange)="valueChange('type', false)"
+                                                   (ngModelChange)="valueChange('type')"
                                                    [ngFormControl]="meetForm.find('type')">
                                             <span [hidden]="showHelpers('type')" class="error-message" [ngClass]="{'red-c': !meetForm.find('type').valid, 'green-c': meetForm.find('type').valid}">
                                                 <i class="material-icons">&#xE86C;</i>
@@ -72,7 +72,7 @@
                                                    id="start"
                                                    required
                                                    [(ngModel)]="start"
-                                                   (ngModelChange)="valueChange('start', false)"
+                                                   (ngModelChange)="valueChange('start')"
                                                    [ngFormControl]="meetForm.find('start')">
                                             <span [hidden]="showHelpers('start')" class="error-message" [ngClass]="{'red-c': !meetForm.find('start').valid, 'green-c': meetForm.find('start').valid}">
                                                 <i class="material-icons">&#xE86C;</i>
@@ -90,7 +90,7 @@
                                                    id="end"
                                                    required
                                                    [(ngModel)]="end"
-                                                   (ngModelChange)="valueChange('end', false)"
+                                                   (ngModelChange)="valueChange('end', true)"
                                                    [ngFormControl]="meetForm.find('end')">
                                             <span [hidden]="validEnd() || !meetForm.find('end').touched" class="error-message red-c">
                                                 <i class="material-icons">&#xE86C;</i>
@@ -113,7 +113,7 @@
                                                    placeholder="Cool Guy"
                                                    required
                                                    [(ngModel)]="host"
-                                                   (ngModelChange)="valueChange('host', false)"
+                                                   (ngModelChange)="valueChange('host')"
                                                    [ngFormControl]="meetForm.find('host')">
                                             <span [hidden]="showHelpers('host')" class="error-message" [ngClass]="{'red-c': !meetForm.find('host').valid, 'green-c': meetForm.find('host').valid}">
                                                 <i class="material-icons">&#xE86C;</i>
@@ -133,7 +133,7 @@
                                                    required
                                                    (onFocus)="geolocate()"
                                                    [(ngModel)]="location"
-                                                   (ngModelChange)="valueChange('location', false)"
+                                                   (ngModelChange)="valueChange('location')"
                                                    [ngFormControl]="meetForm.find('location')">
                                             <span [hidden]="showHelpers('location')" class="error-message" [ngClass]="{'red-c': !meetForm.find('location').valid, 'green-c': meetForm.find('location').valid}">
                                                 <i class="material-icons">&#xE86C;</i>

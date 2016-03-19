@@ -1,7 +1,11 @@
 import {Component} from 'angular2/core';
 import {NotificationsService} from "angular2-notifications/components";
-import {FormBuilder, ControlGroup, Validators, Control, DatePipe} from "angular2/common";
+import {
+    FormBuilder, ControlGroup, Validators, Control, DatePipe, CORE_DIRECTIVES,
+    FORM_DIRECTIVES
+} from "angular2/common";
 import {Meet} from "../helpers/meet.interface";
+import {ProgressComponent} from "../helpers/progress.component";
 
 // Validators
 function biggerThenStart(start: Date, end: Date): { [s: string]: boolean } {
@@ -13,6 +17,13 @@ function biggerThenStart(start: Date, end: Date): { [s: string]: boolean } {
 @Component({
     selector: 'app-meets',
     pipes: [DatePipe],
+    directives: [
+        // Angular
+        CORE_DIRECTIVES,
+        FORM_DIRECTIVES,
+        // App
+        ProgressComponent
+    ],
     templateUrl: 'app/meets/meets.html'
 })
 export class MeetsComponent {
@@ -33,11 +44,11 @@ export class MeetsComponent {
 
         this.meetChecks = [
             {name: 'name', value: this.meetForm.find('name').valid},
-            {name: 'host', value: this.meetForm.find('host').valid},
-            {name: 'start', value: this.meetForm.find('start').valid},
-            {name: 'location', value: this.meetForm.find('location').valid},
             {name: 'type', value: this.meetForm.find('type').valid},
+            {name: 'start', value: this.meetForm.find('start').valid},
             {name: 'end', value: this.meetForm.find('end').valid},
+            {name: 'host', value: this.meetForm.find('host').valid},
+            {name: 'location', value: this.meetForm.find('location').valid}
         ];
 
         // Add a few meets
@@ -88,10 +99,13 @@ export class MeetsComponent {
         else if(temp.valid) return true;
     }
 
-    valueChange(name: string, checkReq: boolean) {
+    valueChange(name: string, is: boolean) {
         let temp = this.meetForm.find(name).valid;
         this.meetChecks.forEach(a=> {
-            if(a.name == name && a.value != temp) a.value = temp
+            if(a.name == name && a.value != temp) {
+                if(is) a.value = this.validEnd();
+                else a.value = temp    
+            }
         })
     }
     
