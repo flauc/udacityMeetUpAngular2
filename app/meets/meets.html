@@ -152,6 +152,25 @@
                             </div>
 
                             <div class="row margin-top">
+                                <div class="st-input">
+                                    <label for="guestList">
+                                        <span class="label">Guest List</span>
+                                        <span class="exp">Individual guests must be seperated by commas</span>
+                                        <input type="text"
+                                               id="guestList"
+                                               name="guestList"
+                                               placeholder="John, Tom, Sindy"
+                                               [(ngModel)]="guestList"
+                                               [ngFormControl]="meetForm.find('guestList')">
+                                            <span [hidden]="showHelpers('guestList')" class="error-message" [ngClass]="{'red-c': !meetForm.find('guestList').valid, 'green-c': meetForm.find('guestList').valid}">
+                                                <i class="material-icons">&#xE86C;</i>
+                                                <span class="txt">Only letters, commas and spaces are allowed</span>
+                                            </span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="row margin-top">
 
                                 <div class="st-input">
                                     <label for="message">
@@ -193,6 +212,10 @@
                                 <p *ngIf="meet.message"><b>Messages:</b> {{meet.message}}</p>
                                 <p><b>Starting Time:</b> {{meet.start | date:"MM/dd/yy - hh:mm:ss"}}</p>
                                 <p><b>Ending Time:</b> {{meet.end | date:"MM/dd/yy - hh:mm:ss"}}</p>
+                                <div *ngIf="meet.guestList">
+                                    <p><b>Guest List</b></p>
+                                    <p *ngFor="#a of meet.guestList">{{a.trim()}}</p>
+                                </div>
                             </div>
                         </div>
                     </div>

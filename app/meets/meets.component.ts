@@ -38,7 +38,7 @@ export class MeetsComponent {
             'location': ['', Validators.required],
             'start': ['', Validators.required],
             'end': ['', Validators.required],
-            'guestList': ['', Validators.pattern('^[a-zA-Z, ]+$')]
+            'guestList': ['', Validators.pattern('^[a-zA-Z ]+(?:,[a-zA-Z ]+)*$')]
         });
 
 
@@ -87,9 +87,20 @@ export class MeetsComponent {
             start: new Date(this.start),
             end: new Date(this.end),
             location: this.location,
-            message: this.message
+            message: this.message,
+            guestList: this.guestList ? this.guestList.split(',') : null
         });
-
+        
+        console.log({
+            name: this.name,
+            type: this.type,
+            host: this.host,
+            start: new Date(this.start),
+            end: new Date(this.end),
+            location: this.location,
+            message: this.message,
+            guestList: this.guestList ? this.guestList.split(',') : null
+        });
         this._notificationService.success('Success', 'Meet created!')
     }
 
