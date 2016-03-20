@@ -6,4 +6,5 @@ export interface Meet {
     end: Date
     location: string
     message?: string
+    guestList?: string[]
 }

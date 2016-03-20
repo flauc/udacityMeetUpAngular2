@@ -37,7 +37,8 @@ export class MeetsComponent {
             'type': ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.maxLength(50), Validators.pattern('^[a-zA-Z ]+$')])],
             'location': ['', Validators.required],
             'start': ['', Validators.required],
-            'end': ['', Validators.required]
+            'end': ['', Validators.required],
+            'guestList': ['', Validators.pattern('^[a-zA-Z, ]+$')]
         });
 
 
@@ -55,7 +56,7 @@ export class MeetsComponent {
         this.meets.push(
             {name: 'Some Event', type: 'Party', host: 'Man', start: new Date("November 14 2016 09:13:00"), end: new Date("November 14 2016 11:13:00"), location: 'Osijek, Croatia'},
             {name: 'My Party', type: 'Birthday Party', host: 'John', start: new Date("October 9 2016 17:00:00"), end: new Date("October 10 2016 09:00:00"), location: 'Osijek, Croatia'},
-            {name: 'Fishing', type: 'Fishing', host: 'John', start: new Date("October 11 2016 09:00:00"), end: new Date("October 15 2016 09:00:00"), location: 'Osijek, Croatia', message: 'Worms have feelings two.'}
+            {name: 'Fishing', type: 'Fishing', host: 'John', start: new Date("October 11 2016 09:00:00"), end: new Date("October 15 2016 09:00:00"), location: 'Osijek, Croatia', message: 'Worms have feelings two.', guestList: ['Filip', 'Marko', 'Tony']}
         )
     }
 
@@ -76,6 +77,7 @@ export class MeetsComponent {
     end: any;
     location: any;
     message: string;
+    guestList: string;
 
     onSubmit() {
         this.meets.push({

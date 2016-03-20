@@ -48,7 +48,7 @@ export class RegComponent {
     ) {
         this.regForm = formBuilder.group({
             'name': ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20), Validators.pattern('^[a-zA-Z ]+$')])],
-            'email': ['', Validators.compose([Validators.required, Validators.pattern('^[a-zA-Z0-9!._-]+[@]+[a-zA-Z.]+$')])],
+            'email': ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z_.-]+[@]+[a-zA-Z]+[.]+[a-zA-Z]{2,5}$')])],
             'password': ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(1000), hasUpper, hasLower, hasDigit, hasSpecial])],
             'employer': ['', Validators.pattern('^[a-zA-Z0-9 .]+$')],
             'position': ['', Validators.pattern('^[a-zA-Z0-9 .]+$')],
