@@ -27,7 +27,8 @@ var MeetsComponent = (function () {
             'type': ['', common_1.Validators.compose([common_1.Validators.required, common_1.Validators.minLength(2), common_1.Validators.maxLength(50), common_1.Validators.pattern('^[a-zA-Z ]+$')])],
             'location': ['', common_1.Validators.required],
             'start': ['', common_1.Validators.required],
-            'end': ['', common_1.Validators.required]
+            'end': ['', common_1.Validators.required],
+            'guestList': ['', common_1.Validators.pattern('^[a-zA-Z ]+(?:,[a-zA-Z ]+)*$')]
         });
         this.meetChecks = [
             { name: 'name', value: this.meetForm.find('name').valid },
@@ -37,10 +38,11 @@ var MeetsComponent = (function () {
             { name: 'host', value: this.meetForm.find('host').valid },
             { name: 'location', value: this.meetForm.find('location').valid }
         ];
-        this.meets.push({ name: 'Some Event', type: 'Party', host: 'Man', start: new Date("November 14 2016 09:13:00"), end: new Date("November 14 2016 11:13:00"), location: 'Osijek, Croatia' }, { name: 'My Party', type: 'Birthday Party', host: 'John', start: new Date("October 9 2016 17:00:00"), end: new Date("October 10 2016 09:00:00"), location: 'Osijek, Croatia' }, { name: 'Fishing', type: 'Fishing', host: 'John', start: new Date("October 11 2016 09:00:00"), end: new Date("October 15 2016 09:00:00"), location: 'Osijek, Croatia', message: 'Worms have feelings two.' });
+        this.meets.push({ name: 'Some Event', type: 'Party', host: 'Man', start: new Date("November 14 2016 09:13:00"), end: new Date("November 14 2016 11:13:00"), location: 'Osijek, Croatia' }, { name: 'My Party', type: 'Birthday Party', host: 'John', start: new Date("October 9 2016 17:00:00"), end: new Date("October 10 2016 09:00:00"), location: 'Osijek, Croatia' }, { name: 'Fishing', type: 'Fishing', host: 'John', start: new Date("October 11 2016 09:00:00"), end: new Date("October 15 2016 09:00:00"), location: 'Osijek, Croatia', message: 'Worms have feelings two.', guestList: ['Filip', 'Marko', 'Tony'] });
     }
     MeetsComponent.prototype.ngOnInit = function () {
         this.initAutocomplete();
+        document.getElementById("name").focus();
     };
     MeetsComponent.prototype.onSubmit = function () {
         this.meets.push({
@@ -50,7 +52,18 @@ var MeetsComponent = (function () {
             start: new Date(this.start),
             end: new Date(this.end),
             location: this.location,
-            message: this.message
+            message: this.message,
+            guestList: this.guestList ? this.guestList.split(',') : null
+        });
+        console.log({
+            name: this.name,
+            type: this.type,
+            host: this.host,
+            start: new Date(this.start),
+            end: new Date(this.end),
+            location: this.location,
+            message: this.message,
+            guestList: this.guestList ? this.guestList.split(',') : null
         });
         this._notificationService.success('Success', 'Meet created!');
     };
@@ -97,6 +110,9 @@ var MeetsComponent = (function () {
     };
     MeetsComponent.prototype.initAutocomplete = function () {
         this.autocomplete = new google.maps.places.Autocomplete((document.getElementById('location')), { types: ['geocode'] });
+    };
+    MeetsComponent.prototype.setIcon = function () {
+        return '<i class="material-icons"></i>';
     };
     MeetsComponent = __decorate([
         core_1.Component({

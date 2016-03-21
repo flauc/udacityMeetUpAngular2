@@ -496,6 +496,16 @@ main {
   width: 100%;
   float: left;
 }
+.st-input .exp {
+  font-size: 1em;
+  padding: 7px 10px 15px;
+  width: 100%;
+  float: left;
+}
+.st-input .red-c i {
+  -webkit-transform: scale(-1, 1) rotate(180deg);
+  transform: scale(-1, 1) rotate(180deg);
+}
 .st-input input,
 .st-input textarea {
   padding: 7px 10px;

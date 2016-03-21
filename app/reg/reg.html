@@ -27,15 +27,15 @@
                                            [ngFormControl]="regForm.find('name')">
                             <span [hidden]="showHelpers('name')">
                                 <span class="error-message" [ngClass]="{'red-c': regForm.find('name').hasError('minlength') || regForm.find('name').hasError('required'), 'green-c': !regForm.find('name').hasError('minlength') && !regForm.find('name').hasError('required')}">
-                                    <i class="material-icons">&#xE86C;</i>
+                                    <i class="material-icons">&#xE8DC;</i>
                                     <span class="txt">Longer then 3 characters</span>
                                 </span>
                                 <span class="error-message" [ngClass]="{'red-c': regForm.find('name').hasError('maxlength') || regForm.find('name').hasError('required'), 'green-c': !regForm.find('name').hasError('maxlength') && !regForm.find('name').hasError('required')}">
-                                    <i class="material-icons">&#xE86C;</i>
+                                    <i class="material-icons">&#xE8DC;</i>
                                     <span class="txt">Shorter then 50 characters</span>
                                 </span>
                                 <span class="error-message" [ngClass]="{'red-c': regForm.find('name').hasError('pattern') || regForm.find('name').hasError('required'), 'green-c': !regForm.find('name').hasError('pattern') && !regForm.find('name').hasError('required')}">
-                                    <i class="material-icons">&#xE86C;</i>
+                                    <i class="material-icons">&#xE8DC;</i>
                                     <span class="txt">Has only letters and spaces</span>
                                 </span>
                             </span>
@@ -57,7 +57,7 @@
                                            (ngModelChange)="valueChange('email', true)"
                                            [ngFormControl]="regForm.find('email')">
                              <span class="error-message" [hidden]="showHelpers('email')" [ngClass]="{'red-c': !regForm.find('email').valid || regForm.find('email').hasError('required'), 'green-c': regForm.find('email').valid && !regForm.find('email').hasError('required') && !regForm.find('email').hasError('pattern')}">
-                                <i class="material-icons">&#xE86C;</i>
+                                <i class="material-icons">&#xE8DC;</i>
                                 <span class="txt">Is a valid email</span>
                             </span>
                                 </label>
@@ -78,27 +78,27 @@
                                 </label>
                             <span [hidden]="showHelpers('password')">
                                 <span class="error-message" [ngClass]="{'red-c': regForm.find('password').hasError('minlength') || regForm.find('password').hasError('required'), 'green-c': !regForm.find('password').hasError('minlength') && !regForm.find('password').hasError('required')}">
-                                    <i class="material-icons">&#xE86C;</i>
+                                    <i class="material-icons">&#xE8DC;</i>
                                     <span class="txt">Longer then 8 characters</span>
                                 </span>
                                 <span class="error-message" [ngClass]="{'red-c': regForm.find('password').hasError('maxlength') || regForm.find('password').hasError('required'), 'green-c': !regForm.find('password').hasError('maxlength') && !regForm.find('password').hasError('required')}">
-                                    <i class="material-icons">&#xE86C;</i>
+                                    <i class="material-icons">&#xE8DC;</i>
                                     <span class="txt">Shorter then 1000 characters</span>
                                 </span>
                                 <span class="error-message" [ngClass]="{'red-c': regForm.find('password').hasError('hasLower') || regForm.find('password').hasError('required'), 'green-c': !regForm.find('password').hasError('hasLower') && !regForm.find('password').hasError('required')}">
-                                    <i class="material-icons">&#xE86C;</i>
+                                    <i class="material-icons">&#xE8DC;</i>
                                     <span class="txt">At lest one lowercase letter</span>
                                 </span>
                                 <span class="error-message" [ngClass]="{'red-c': regForm.find('password').hasError('hasUpper') || regForm.find('password').hasError('required'), 'green-c': !regForm.find('password').hasError('hasUpper') && !regForm.find('password').hasError('required')}">
-                                    <i class="material-icons">&#xE86C;</i>
+                                    <i class="material-icons">&#xE8DC;</i>
                                     <span class="txt">At lest one uppercase letter</span>
                                 </span>
                                 <span class="error-message" [ngClass]="{'red-c': regForm.find('password').hasError('hasDigit') || regForm.find('password').hasError('required'), 'green-c': !regForm.find('password').hasError('hasDigit') && !regForm.find('password').hasError('required')}">
-                                    <i class="material-icons">&#xE86C;</i>
+                                    <i class="material-icons">&#xE8DC;</i>
                                     <span class="txt">At lest one digit</span>
                                 </span>
                                 <span class="error-message" [ngClass]="{'red-c': regForm.find('password').hasError('hasSpecial') || regForm.find('password').hasError('required'), 'green-c': !regForm.find('password').hasError('hasSpecial') && !regForm.find('password').hasError('required')}">
-                                    <i class="material-icons">&#xE86C;</i>
+                                    <i class="material-icons">&#xE8DC;</i>
                                     <span class="txt">At lest one special (*!@$#?=&%)</span>
                                 </span>
                             </span>
@@ -128,7 +128,7 @@
                                            (ngModelChange)="valueChange('employer', false)"
                                            [ngFormControl]="regForm.find('employer')">
                                 <span [hidden]="showHelpers('employer')" class="error-message" [ngClass]="{'red-c': !regForm.find('employer').valid, 'green-c': regForm.find('employer').valid && !regForm.find('employer').hasError('pattern')}">
-                                    <i class="material-icons">&#xE86C;</i>
+                                    <i class="material-icons">&#xE8DC;</i>
                                     <span class="txt">Has only letters, spaces, dots and numbers.</span>
                                 </span>
                                 </label>
@@ -145,7 +145,7 @@
                                            (ngModelChange)="valueChange('position', false)"
                                            [ngFormControl]="regForm.find('position')">
                                 <span [hidden]="showHelpers('position')" class="error-message" [ngClass]="{'red-c': !regForm.find('position').valid, 'green-c': regForm.find('position').valid && !regForm.find('position').hasError('pattern')}">
-                                    <i class="material-icons">&#xE86C;</i>
+                                    <i class="material-icons">&#xE8DC;</i>
                                     <span class="txt">Has only letters, spaces, dots and numbers.</span>
                                 </span>
                                 </label>
@@ -162,7 +162,7 @@
                                            (ngModelChange)="valueChange('fruit', false)"
                                            [ngFormControl]="regForm.find('fruit')">
                                 <span [hidden]="showHelpers('fruit')" class="error-message" [ngClass]="{'red-c': !regForm.find('fruit').valid, 'green-c': regForm.find('fruit').valid && !regForm.find('fruit').hasError('pattern')}">
-                                    <i class="material-icons">&#xE86C;</i>
+                                    <i class="material-icons">&#xE8DC;</i>
                                     <span class="txt">Has only letters and spaces.</span>
                                 </span>
                                 </label>
@@ -181,7 +181,7 @@
                                            (ngModelChange)="valueChange('num', false)"
                                            [ngFormControl]="regForm.find('num')">
                                 <span [hidden]="showHelpers('num')" class="error-message" [ngClass]="{'red-c': !regForm.find('num').valid, 'green-c': regForm.find('num').valid && !regForm.find('num').hasError('pattern')}">
-                                    <i class="material-icons">&#xE86C;</i>
+                                    <i class="material-icons">&#xE8DC;</i>
                                     <span class="txt">Is whole number</span>
                                 </span>
                                 </label>
@@ -198,7 +198,7 @@
                                            (ngModelChange)="valueChange('year', false)"
                                            [ngFormControl]="regForm.find('year')">
                                 <span [hidden]="showHelpers('year')" class="error-message" [ngClass]="{'red-c': !regForm.find('year').valid, 'green-c': regForm.find('year').valid && !regForm.find('year').hasError('pattern')}">
-                                    <i class="material-icons">&#xE86C;</i>
+                                    <i class="material-icons">&#xE8DC;</i>
                                     <span class="txt">Is AC and isn't in the future</span>
                                 </span>
                                 </label>
@@ -211,7 +211,6 @@
                                     <input list="episodes"
                                            id="throne"
                                            placeholder="Winter Is Coming"
-                                           required
                                            [(ngModel)]="throne"
                                            (ngModelChange)="valueChange('throne', false)">
 

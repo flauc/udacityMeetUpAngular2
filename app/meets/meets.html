@@ -28,7 +28,7 @@
                                                    (ngModelChange)="valueChange('name')"
                                                    [ngFormControl]="meetForm.find('name')">
                                             <span [hidden]="showHelpers('name')" class="error-message" [ngClass]="{'red-c': !meetForm.find('name').valid, 'green-c': meetForm.find('name').valid}">
-                                                <i class="material-icons">&#xE86C;</i>
+                                                <i class="material-icons">&#xE8DC;</i>
                                                 <span class="txt">A valid name is required</span>
                                             </span>
                                         </label>
@@ -48,7 +48,7 @@
                                                    (ngModelChange)="valueChange('type')"
                                                    [ngFormControl]="meetForm.find('type')">
                                             <span [hidden]="showHelpers('type')" class="error-message" [ngClass]="{'red-c': !meetForm.find('type').valid, 'green-c': meetForm.find('type').valid}">
-                                                <i class="material-icons">&#xE86C;</i>
+                                                <i class="material-icons">&#xE8DC;</i>
                                                 <span class="txt">A valid type is required</span>
                                             </span>
 
@@ -77,7 +77,7 @@
                                                    (ngModelChange)="valueChange('start')"
                                                    [ngFormControl]="meetForm.find('start')">
                                             <span [hidden]="showHelpers('start')" class="error-message" [ngClass]="{'red-c': !meetForm.find('start').valid, 'green-c': meetForm.find('start').valid}">
-                                                <i class="material-icons">&#xE86C;</i>
+                                                <i class="material-icons">&#xE8DC;</i>
                                                 <span class="txt">A valid date is required</span>
                                             </span>
                                         </label>
@@ -95,7 +95,7 @@
                                                    (ngModelChange)="valueChange('end', true)"
                                                    [ngFormControl]="meetForm.find('end')">
                                             <span [hidden]="validEnd() || !meetForm.find('end').touched" class="error-message red-c">
-                                                <i class="material-icons">&#xE86C;</i>
+                                                <i class="material-icons">&#xE8DC;</i>
                                                 <span class="txt">Meet must end later then it starts</span>
                                             </span>
                                         </label>
@@ -120,7 +120,7 @@
                                                    (ngModelChange)="valueChange('host')"
                                                    [ngFormControl]="meetForm.find('host')">
                                             <span [hidden]="showHelpers('host')" class="error-message" [ngClass]="{'red-c': !meetForm.find('host').valid, 'green-c': meetForm.find('host').valid}">
-                                                <i class="material-icons">&#xE86C;</i>
+                                                <i class="material-icons">&#xE8DC;</i>
                                                 <span class="txt">A valid host is required</span>
                                             </span>
                                         </label>
@@ -129,7 +129,7 @@
 
                                 <div class="columns six">
                                     <div class="st-input">
-                                        <label for="start">
+                                        <label for="location">
                                             <span class="label">Location</span>
                                             <input type="text"
                                                    id="location"
@@ -142,13 +142,32 @@
                                                    (ngModelChange)="valueChange('location')"
                                                    [ngFormControl]="meetForm.find('location')">
                                             <span [hidden]="showHelpers('location')" class="error-message" [ngClass]="{'red-c': !meetForm.find('location').valid, 'green-c': meetForm.find('location').valid}">
-                                                <i class="material-icons">&#xE86C;</i>
+                                                <i class="material-icons">&#xE8DC;</i>
                                                 <span class="txt">A valid location is required</span>
                                             </span>
                                         </label>
                                     </div>
                                 </div>
 
+                            </div>
+
+                            <div class="row margin-top">
+                                <div class="st-input">
+                                    <label for="guestList">
+                                        <span class="label">Guest List</span>
+                                        <span class="exp">Individual guests must be seperated by commas</span>
+                                        <input type="text"
+                                               id="guestList"
+                                               name="guestList"
+                                               placeholder="John, Tom, Sindy"
+                                               [(ngModel)]="guestList"
+                                               [ngFormControl]="meetForm.find('guestList')">
+                                            <span [hidden]="showHelpers('guestList')" class="error-message" [ngClass]="{'red-c': !meetForm.find('guestList').valid, 'green-c': meetForm.find('guestList').valid}">
+                                                <i class="material-icons">&#xE8DC;</i>
+                                                <span class="txt">Only letters, commas and spaces are allowed</span>
+                                            </span>
+                                    </label>
+                                </div>
                             </div>
 
                             <div class="row margin-top">
@@ -193,6 +212,10 @@
                                 <p *ngIf="meet.message"><b>Messages:</b> {{meet.message}}</p>
                                 <p><b>Starting Time:</b> {{meet.start | date:"MM/dd/yy - hh:mm:ss"}}</p>
                                 <p><b>Ending Time:</b> {{meet.end | date:"MM/dd/yy - hh:mm:ss"}}</p>
+                                <div *ngIf="meet.guestList">
+                                    <p><b>Guest List</b></p>
+                                    <p *ngFor="#a of meet.guestList">{{a.trim()}}</p>
+                                </div>
                             </div>
                         </div>
                     </div>

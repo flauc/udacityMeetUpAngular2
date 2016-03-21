@@ -37,13 +37,13 @@ var RegComponent = (function () {
         this._notificationService = _notificationService;
         this.regForm = formBuilder.group({
             'name': ['', common_1.Validators.compose([common_1.Validators.required, common_1.Validators.minLength(3), common_1.Validators.maxLength(20), common_1.Validators.pattern('^[a-zA-Z ]+$')])],
-            'email': ['', common_1.Validators.compose([common_1.Validators.required, common_1.Validators.pattern('^[a-zA-Z0-9!._-]+[@]+[a-zA-Z.]+$')])],
+            'email': ['', common_1.Validators.compose([common_1.Validators.required, common_1.Validators.pattern('[a-zA-Z_.-]+[@]+[a-zA-Z]+[.]+[a-zA-Z]{2,5}$')])],
             'password': ['', common_1.Validators.compose([common_1.Validators.required, common_1.Validators.minLength(8), common_1.Validators.maxLength(1000), hasUpper, hasLower, hasDigit, hasSpecial])],
             'employer': ['', common_1.Validators.pattern('^[a-zA-Z0-9 .]+$')],
             'position': ['', common_1.Validators.pattern('^[a-zA-Z0-9 .]+$')],
             'fruit': ['', common_1.Validators.pattern('^[a-zA-Z ]+$')],
             'num': ['', common_1.Validators.pattern('^[0-9]+$')],
-            'year': ['', common_1.Validators.pattern('\b(\d|[0-9][0-2]|[0-9][0-9][0-9]|[0-2][0][0-1][0-6])\b')],
+            'year': ['', common_1.Validators.pattern('^([0-9]|[0-9][0-9]|[0-9][0-9][0-9]|[1][0-9][0-9][0-9]|[2][0][1][0-6])$')],
             'throne': ['', common_1.Validators.pattern('^[a-zA-Z0-9!._-]+[@]+[a-zA-Z.]+$')],
         });
         this.reqChecks = [
@@ -60,6 +60,9 @@ var RegComponent = (function () {
             { name: 'throne', value: this.regForm.find('throne').valid }
         ];
     }
+    RegComponent.prototype.ngOnInit = function () {
+        document.getElementById("name").focus();
+    };
     RegComponent.prototype.showHelpers = function (value) {
         var temp = this.regForm.find(value);
         if (temp.touched && !temp.valid)
