@@ -62,6 +62,8 @@ export class MeetsComponent {
 
     ngOnInit() {
         this.initAutocomplete();
+        // Adds focus to element on view load
+        document.getElementById("name").focus();
     }
 
     // Locals
@@ -155,5 +157,9 @@ export class MeetsComponent {
         this.autocomplete = new google.maps.places.Autocomplete(
             (document.getElementById('location')),
             {types: ['geocode']});
+    }
+    
+    setIcon() {
+        return '<i class="material-icons"></i>'
     }
 }

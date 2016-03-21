@@ -74,6 +74,11 @@ export class RegComponent {
         ]
     }
 
+    ngOnInit() {
+        // Adds focus to element on view load
+        document.getElementById("name").focus();
+    }
+
     // Locals
     regForm: ControlGroup;
 
