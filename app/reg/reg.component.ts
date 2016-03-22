@@ -54,7 +54,7 @@ export class RegComponent {
             'position': ['', Validators.pattern('^[a-zA-Z0-9 .]+$')],
             'fruit': ['', Validators.pattern('^[a-zA-Z ]+$')],
             'num': ['', Validators.pattern('^[0-9]+$')],
-            'year': ['', Validators.pattern('^([0-9]|[0-9][0-9]|[0-9][0-9][0-9]|[1][0-9][0-9][0-9]|[2][0][1][0-6])$')],
+            'year': ['', Validators.pattern('^([0-9]|[0-9][0-9]|[0-9][0-9][0-9]|[1][0-9][0-9][0-9]|[2][0][01][0-6])$')],
             'throne': ['', Validators.pattern('^[a-zA-Z0-9!._-]+[@]+[a-zA-Z.]+$')],
         });
 
